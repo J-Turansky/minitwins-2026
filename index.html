@@ -626,6 +626,9 @@ tbody tr.r:hover td{background:#FDF5DD}
 /* ===== v4: mobile go-live ===== */
 .tab-i,.tab-s,.m-share,.bt-dots,.f9-mini,.f9-st,.wx-swipe{display:none}
 .race li{padding-left:10px}
+a.brand-mark{text-decoration:none;border-radius:2px;transition:transform .15s var(--ease)}
+a.brand-mark:active{transform:scale(.96)}
+a.brand-mark:focus-visible{outline:2px solid var(--yel);outline-offset:3px}
 .race li.win{box-shadow:inset 4px 0 0 var(--yel)}
 .btn-share svg,.btn-me svg{flex:none}
 .btn-me[aria-pressed="true"]{background:var(--yel);border-color:var(--yel);color:var(--ink)}
@@ -769,7 +772,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 <header class="mast">
   <div class="wrap">
     <div class="brand">
-      <div class="brand-mark" aria-label="MRO Minitwins"><span class="m">MRO</span><span class="t">Minitwins</span></div>
+      <a class="brand-mark" href="./" data-home aria-label="MRO Minitwins, back to the top"><span class="m">MRO</span><span class="t">Minitwins</span></a>
       <div class="brand-sub">BMCRC-MRO Championships 2026 <span class="ver">v4</span></div>
     </div>
     <div class="mast-meta">Standings after Round 8 of 9 · TSL Timing, printed 10 Sep 2026</div>
@@ -1888,6 +1891,20 @@ function v4Toast(m){
   t.textContent=m; t.classList.add("show"); clearTimeout(v4TT); v4TT=setTimeout(()=>t.classList.remove("show"),2800);
 }
 
+/* Home: the logo resets to the standings at the top of the page */
+function v4Home(){
+  const y0=scrollY, had=!!location.hash;
+  v4Pop=true;
+  try{openId=null;query="";$("#q").value="";setTab("st");renderTable();}finally{v4Pop=false;}
+  v4TabBar(); v4Me(); hideTip();
+  if(had) try{history.replaceState({...(history.state||{}),y:y0},"");history.pushState({v4:1},"",location.pathname+location.search);}catch(e){}
+  scrollTo({top:0,behavior:v4Calm()?"auto":"smooth"});
+}
+document.addEventListener("click",e=>{
+  const a=e.target.closest("[data-home]"); if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.button) return;
+  e.preventDefault(); v4Home();
+});
+
 /* Deep links: every view has a shareable address and the back button walks tabs */
 function f9Enc(){const v=riders.map(r=>f9.get(r.id)||0);while(v.length&&!v[v.length-1])v.pop();return v.join(".")||"0";}
 function f9Dec(s){
@@ -1946,7 +1963,7 @@ addEventListener("popstate",e=>{
   const y=e.state&&e.state.y;
   if(y!=null) scrollTo(0,y); else if(v4Mob()) v4ToPanel(activeTab,true);
 });
-["click","change"].forEach(ev=>document.addEventListener(ev,e=>{if(!e.target.closest||e.target.closest(".tabs"))return;setTimeout(()=>v4Sync(false),0);}));
+["click","change"].forEach(ev=>document.addEventListener(ev,e=>{if(!e.target.closest||e.target.closest(".tabs,[data-home]"))return;setTimeout(()=>v4Sync(false),0);}));
 
 /* Share: native share sheet on phones, copy link elsewhere */
 function v4ShareText(){
