@@ -765,6 +765,29 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
   .me-jump{font-size:13.5px}
 }
 
+@media (min-width:641px){
+  .lead{gap:32px;padding:26px 0 34px;margin-bottom:18px}
+  .board{width:196px;padding:8px}
+  .board-row{font-size:40px;padding:6px 10px 4px}
+  .board-row.sm{font-size:32px}
+  .board-row + .board-row{margin-top:5px}
+  .lead h1{font-size:clamp(34px,3.4vw,48px);max-width:20ch;margin:0 0 12px}
+  .lead p{font-size:15px;line-height:1.5;margin:0 0 8px;max-width:60ch}
+  .facts{margin-top:12px;padding-top:10px}
+  .fact b{font-size:22px}
+  .battles{padding:14px 18px 6px}
+  .battles .sub{margin:0 0 6px;font-size:13px}
+  .battle{padding:8px 0}
+  .battle-top b{font-size:17px}
+  .battle-riders{font-size:13px;margin-top:2px}
+  .gapbar{margin-top:6px}
+  #battles .battle:nth-child(n+4){display:none}
+  .bt-foot{margin-top:6px;padding-top:8px}
+}
+@media (min-width:641px) and (max-width:1100px){
+  #battles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
