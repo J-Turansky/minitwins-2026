@@ -792,7 +792,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
       <h2 id="bt-h">Still to settle</h2>
       <p class="sub">Brands Hatch Indy, 3–4 Oct. Four races, 100 points on offer.</p>
       <div id="battles"></div>
-      <div class="bt-foot"><p class="bt-fc" id="bt-fc"></p><button class="btn bt-cta" data-goto="f9">Play out Round 9 <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M8 3.5 11.5 7 8 10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      <div class="bt-foot"><p class="bt-fc" id="bt-fc"></p></div>
     </aside>
   </section>
 
@@ -805,7 +805,6 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
     <button class="tab" role="tab" id="t-rd" aria-controls="p-rd" aria-selected="false" tabindex="-1"><span class="tab-i" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="11.5" r="6"/><path d="M10 11.5V8.5M8 2.5h4M15.2 6.3l1.3-1.3"/></svg></span><span class="tab-l">Timing sheets</span><span class="tab-s">Timing</span></button>
     <button class="tab" role="tab" id="t-rc" aria-controls="p-rc" aria-selected="false" tabindex="-1"><span class="tab-i" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15a7 7 0 1 1 14 0"/><path d="M10 15l3.8-4.6"/></svg></span><span class="tab-l">Racecraft</span><span class="tab-s">Racecraft</span></button>
     <button class="tab" role="tab" id="t-hh" aria-controls="p-hh" aria-selected="false" tabindex="-1"><span class="tab-i" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="10" r="4.5"/><circle cx="13" cy="10" r="4.5"/></svg></span><span class="tab-l">Head to head</span><span class="tab-s">H2H</span></button>
-    <button class="tab tab-f9" role="tab" id="t-f9" aria-controls="p-f9" aria-selected="false" tabindex="-1"><span class="tab-i" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h4.5M12.5 6H17M3 14h8M15 14h2"/><circle cx="10" cy="6" r="2.3"/><circle cx="13" cy="14" r="2.3"/></svg></span><span class="tab-l">Round 9 predictor</span><span class="tab-s">Round 9</span></button>
   </div>
 
   <section class="panel" id="p-st" role="tabpanel" aria-labelledby="t-st">
@@ -921,30 +920,6 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
     <div id="hh"></div>
   </section>
 
-  <section class="panel" id="p-f9" role="tabpanel" aria-labelledby="t-f9" hidden>
-    <div class="res-head">
-      <h2 class="res-title">Play out Round 9 <span>· Brands Hatch Indy, 3–4 Oct</span></h2>
-      <div class="seg" role="group" aria-label="Starting scenario" id="f9-pre">
-        <button data-pre="form">Recent form</button>
-        <button data-pre="brands">Repeat Round 1</button>
-        <button data-pre="last">Repeat Round 8</button>
-        <button data-pre="blank">Blank</button>
-      </div>
-    </div>
-    <p class="rank-note">Drag a slider to set what each rider scores across the four races, anything from 0 to 100. Each step is a points total that four real finishes can add up to, and the small print shows the most even way to get there. Ties on points are split on wins.</p>
-    <div class="f9-grid">
-      <div>
-        <div class="f9-mini" id="f9-mini" aria-hidden="true"></div>
-        <div class="tbl-wrap f9-tbl"><table>
-          <caption class="sr">Round 9 scenario. Set each rider's points and see the projected final standings.</caption>
-          <thead><tr><th class="num hide-s">Now</th><th>Rider</th><th>Round 9 points</th><th class="num hide-s">Adds</th><th class="num">Final</th><th class="num">Finish</th></tr></thead>
-          <tbody id="f9-body"></tbody>
-        </table></div>
-        <div class="det-btns"><button class="btn" id="f9-more"></button><button class="btn btn-share" data-share><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.5V3M6.5 6.5 10 3l3.5 3.5M6.5 9H4.5v8h11V9h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Share my prediction</button></div>
-      </div>
-      <aside class="f9-side" id="f9-side" aria-live="polite"></aside>
-    </div>
-  </section>
 </main>
 
 <footer class="foot">
@@ -1119,7 +1094,7 @@ function renderTrack(){
 }
 
 /* Tabs */
-const TABS=["st","ch","rs","rd","rc","hh","f9"];
+const TABS=["st","ch","rs","rd","rc","hh"];
 let activeTab="st";
 function setTab(id,focus){
   activeTab=id;
@@ -1135,7 +1110,6 @@ function setTab(id,focus){
   if(id==="rd") renderTiming();
   if(id==="rc") renderRacecraft();
   if(id==="hh") renderH2H();
-  if(id==="f9") renderFinale();
   renderTrack();
 }
 document.querySelector(".tabs").addEventListener("click",e=>{const b=e.target.closest(".tab"); if(b) setTab(b.id.slice(2));});
@@ -1801,58 +1775,6 @@ $("#hh-pre").addEventListener("click",e=>{const b=e.target.closest("[data-hp]");
 document.addEventListener("click",e=>{const b=e.target.closest("[data-h2h]");if(!b)return;const r=riders[+b.dataset.h2h];hhA=r.id;hhB=(r.pos===1?riders[1]:riders[r.pos-2]).id;setTab("hh",true);});
 document.addEventListener("click",e=>{const b=e.target.closest("[data-goto]");if(b)setTab(b.dataset.goto,true);});
 
-/* Round 9 predictor */
-const ATT=(()=>{const v=[0,...PTS],s=new Set();for(const a of v)for(const b of v)for(const c of v)for(const d of v)s.add(a+b+c+d);return [...s].sort((x,y)=>x-y);})();
-const f9Combo=(()=>{const v=[0,...PTS],best=new Map();
-  for(let a=0;a<v.length;a++)for(let b=a;b<v.length;b++)for(let c=b;c<v.length;c++)for(let d=c;d<v.length;d++){
-    const q=[v[a],v[b],v[c],v[d]].sort((x,y)=>y-x),s=q[0]+q[1]+q[2]+q[3],mu=s/4,va=q.reduce((x,y)=>x+(y-mu)**2,0),o=best.get(s);
-    if(!o||va<o.v) best.set(s,{v:va,q});}
-  return best;})();
-const snap=v=>ATT.reduce((a,b)=>Math.abs(b-v)<Math.abs(a-v)?b:a);
-const f9=new Map(); let f9Pre="form", f9All=false;
-function f9Preset(p){
-  f9Pre=p;
-  riders.forEach(r=>{let v=0;
-    if(p==="brands") v=r.rounds[0];
-    else if(p==="form") v=snap((r.rounds[DONE-1]+r.rounds[DONE-2])/2);
-    else if(p==="last") v=r.rounds[DONE-1];
-    f9.set(r.id,v);});
-}
-f9Preset("form");
-function f9Proj(){return riders.map(r=>{const add=f9.get(r.id)||0;return {r,add,tot:r.pts+add};}).sort((a,b)=>b.tot-a.tot||b.r.w-a.r.w||a.r.pos-b.r.pos).map((o,i)=>({...o,fp:i+1}));}
-function f9Valid(){const v=[...f9.values()].sort((a,b)=>b-a);let s=0,cap=0;for(let k=0;k<PTS.length;k++){s+=v[k]||0;cap+=4*PTS[k];if(s>cap)return {k:k+1,cap};}return null;}
-const f9Needs=(()=>{const out=[];battleGroups().forEach(g=>{for(let i=1;i<g.riders.length;i++){const u=g.riders[i-1],l=g.riders[i],gap=u.pts-l.pts;if(gap<LEFT)out.push({u,l,gap});}});return out.slice(0,7);})();
-function renderFinale(){
-  $("#f9-pre").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.pre===f9Pre));
-  const list=f9All?riders:riders.slice(0,16);
-  $("#f9-body").innerHTML=list.map(r=>{const v=f9.get(r.id)||0;return `<tr data-f9r="${r.id}"><td class="num pos hide-s">${r.pos}</td>
-    <td><button class="linkish" data-open="${r.id}">${esc(nice(r))}</button><span class="f9-now">${r.pts} pts now</span></td>
-    <td class="f9-sl"><input type="range" min="0" max="${ATT.length-1}" step="1" value="${ATT.indexOf(v)}" data-f9="${r.id}" aria-label="Round 9 points for ${esc(nice(r))}" aria-valuetext="${v} points"></td>
-    <td class="num f9-add hide-s"></td><td class="num pts f9-tot"></td><td class="num f9-fp"></td></tr>`;}).join("");
-  $("#f9-more").textContent=f9All?"Show the top 16 only":`Show all ${riders.length} riders`;
-  f9Update();
-}
-function f9Update(){
-  const P=f9Proj(), pm=new Map(P.map(o=>[o.r.id,o]));
-  document.querySelectorAll("#f9-body tr").forEach(tr=>{
-    const o=pm.get(+tr.dataset.f9r), c=f9Combo.get(o.add), mv=o.r.pos-o.fp;
-    tr.querySelector(".f9-add").innerHTML=`+${o.add}<small>${o.add?c.q.map(p=>p?"P"+posOf(p):"–").join(" "):"no points"}</small>`;
-    tr.querySelector(".f9-tot").textContent=o.tot;
-    tr.querySelector(".f9-fp").innerHTML=`<b>P${o.fp}</b>${mv?` <span class="mv ${mv>0?"up":"dn"}">${mv>0?"▲"+mv:"▼"+(-mv)}</span>`:""}`;
-    tr.classList.toggle("moved",!!mv);
-  });
-  const bad=f9Valid(), s2=P[1], s3=P[2], kept=s2.r.pos===2;
-  const fc=WX&&WX.fc?WX.fc.days.map(d=>{const dt=new Date(d.time+"T12:00:00Z");return `<div><b>${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][dt.getUTCDay()]} ${dt.getUTCDate()} Oct</b><span>${Math.round(d.temperature_2m_max)}° / ${Math.round(d.temperature_2m_min)}°</span><span>${WMO(d.weather_code)}, ${d.precipitation_probability_max}% chance of rain</span></div>`;}).join(""):"";
-  $("#f9-side").innerHTML=`${bad?`<div class="f9-warn"><b>Not possible as set.</b> The top ${bad.k} can share at most ${bad.cap} points across four races, and this scenario gives them more. Pull someone down.</div>`:""}
-  <div class="f9-verdict"><h3>Fight for 2nd</h3><b>${esc(nice(s2.r))} ${kept?"keeps":"takes"} 2nd</b><span>${s2.tot} to ${esc(nice(s3.r))}'s ${s3.tot}${s2.tot===s3.tot?", split on wins":""}</span></div>
-  <div class="f9-board"><h3>Projected final top 10</h3><ol>${P.slice(0,10).map(o=>{const mv=o.r.pos-o.fp;return `<li><span class="p">${o.fp}</span><span class="n">${esc(nice(o.r))}</span><span class="t">${o.tot}</span><span class="m">${mv?`<span class="mv ${mv>0?"up":"dn"}">${mv>0?"▲"+mv:"▼"+(-mv)}</span>`:""}</span></li>`;}).join("")}</ol></div>
-  <div class="f9-needs"><h3 class="panel-h">What it takes</h3><ul>${f9Needs.map(n=>{const passes=pm.get(n.l.id).fp<pm.get(n.u.id).fp;return `<li><span>${n.gap?`<b>${esc(nice(n.l))}</b> must outscore ${esc(nice(n.u))} by ${n.gap+1} to pass${n.gap+1<=LEFT?"":" (not possible)"}; ${n.gap} ties it.`:`<b>${esc(nice(n.l))}</b> and ${esc(nice(n.u))} are level: whoever scores more finishes ahead.`}</span>${passes?`<em>Happens here</em>`:""}</li>`;}).join("")}</ul></div>
-  ${fc?`<div class="f9-fc"><h3>Brands Hatch Indy forecast</h3><div class="fc-days">${fc}</div><p>Open-Meteo forecast, fetched ${esc(WX.fc.fetched)}. Round 1 on this layout started its sessions at ${(()=>{const t=WX[1].s.map(o=>o.temperature_2m);return Math.round(Math.min(...t))+' to '+Math.round(Math.max(...t));})()}°C back in March.</p></div>`:""}`;
-}
-$("#f9-pre").addEventListener("click",e=>{const b=e.target.closest("[data-pre]");if(!b)return;f9Preset(b.dataset.pre);renderFinale();});
-$("#f9-body").addEventListener("input",e=>{const s=e.target.closest("[data-f9]");if(!s)return;const v=ATT[+s.value];f9.set(+s.dataset.f9,v);s.setAttribute("aria-valuetext",v+" points");f9Pre="custom";$("#f9-pre").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed","false"));f9Update();});
-$("#f9-more").addEventListener("click",()=>{f9All=!f9All;renderFinale();});
-
 /* Hero: finale forecast */
 if(WX&&WX.fc){const d=WX.fc.days;const hi=[...new Set(d.map(x=>Math.round(x.temperature_2m_max)))];$("#bt-fc").innerHTML=`<b>Finale forecast</b> Highs of ${hi.join(" and ")}°C, ${d.every(x=>x.precipitation_probability_max<30)?`rain chance under ${Math.max(...d.map(x=>x.precipitation_probability_max))+4-(Math.max(...d.map(x=>x.precipitation_probability_max))+4)%5}%`:"some rain risk"}.`;}
 
@@ -1906,17 +1828,11 @@ document.addEventListener("click",e=>{
 });
 
 /* Deep links: every view has a shareable address and the back button walks tabs */
-function f9Enc(){const v=riders.map(r=>f9.get(r.id)||0);while(v.length&&!v[v.length-1])v.pop();return v.join(".")||"0";}
-function f9Dec(s){
-  const v=s.split(".").map(Number); if(!v.length||v.some(x=>!Number.isFinite(x))) return false;
-  riders.forEach((r,i)=>f9.set(r.id,snap(Math.max(0,Math.min(100,v[i]||0))))); f9Pre="custom"; return true;
-}
 function v4Hash(){
   if(activeTab==="st") return openId!=null&&riders[openId]?`#rider/${slug(riders[openId])}`:"#st";
   if(activeTab==="rs") return `#rs/${resRound+1}`;
   if(activeTab==="rd") return `#rd/${tdRound+1}/${tdSess}`;
   if(activeTab==="hh") return `#hh/${slug(riders[hhA])}/${slug(riders[hhB])}`;
-  if(activeTab==="f9") return f9Pre==="custom"?`#f9/${f9Enc()}`:f9Pre==="form"?"#f9":`#f9/${f9Pre}`;
   return "#"+activeTab;
 }
 let v4Pop=false;
@@ -1938,7 +1854,6 @@ function v4Apply(h){
   if(t==="rs"){const k=+a-1;if(k>=0&&k<DONE)resRound=k;setTab("rs");return true;}
   if(t==="rd"){const k=+a-1;if(LF.rounds[k]){tdRound=k;const s=+b;tdSess=s>=0&&s<LF.rounds[k].s.length?s:Math.min(tdSess,LF.rounds[k].s.length-1);tdHl=null;}setTab("rd");return true;}
   if(t==="hh"){const A=bySlug(a),B=bySlug(b);if(A&&B&&A!==B){hhA=A.id;hhB=B.id;}setTab("hh");return true;}
-  if(t==="f9"){if(["form","brands","last","blank"].includes(a))f9Preset(a);else if(!a||!f9Dec(a))f9Preset("form");setTab("f9");return true;}
   if(TABS.includes(t)){setTab(t);return true;}
   return false;
 }
@@ -1969,10 +1884,9 @@ addEventListener("popstate",e=>{
 function v4ShareText(){
   if(activeTab==="st"&&openId!=null){const r=riders[openId];return `${nice(r)}: P${r.pos} on ${r.pts} points after Round ${DONE} of the 2026 MRO Minitwins.`;}
   if(activeTab==="hh"){const A=riders[hhA],B=riders[hhB];return `${nice(A)} v ${nice(B)}, head to head in the 2026 MRO Minitwins.`;}
-  if(activeTab==="f9"){const P=f9Proj();return `My Round 9 call for the MRO Minitwins: ${P.slice(0,3).map(o=>`P${o.fp} ${nice(o.r)} ${o.tot}`).join(", ")}. Play it out yourself:`;}
   if(activeTab==="rd") return `R${tdRound+1} ${LF.rounds[tdRound].venue} timing sheets, 2026 MRO Minitwins.`;
   if(activeTab==="rs") return `Round ${resRound+1} results, 2026 MRO Minitwins.`;
-  return `2026 MRO Minitwins: standings, timing sheets and a Round 9 predictor after Round ${DONE}.`;
+  return `2026 MRO Minitwins: standings, results and timing sheets.`;
 }
 async function v4Share(){
   v4Sync(false);
@@ -2025,34 +1939,6 @@ function v4Dots(){
     const end=bx.scrollLeft+bx.clientWidth>=bx.scrollWidth-4, i=end?n-1:Math.round(bx.scrollLeft/step());
     d.querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-current",j===i));});},{passive:true});
 }
-
-/* Round 9 predictor: steppers, slider fill, sticky verdict on phones */
-function v4F9Fill(){document.querySelectorAll("#f9-body input[type=range]").forEach(s=>s.style.setProperty("--v",(s.value/s.max*100).toFixed(1)+"%"));}
-function v4F9Mini(){
-  const el=$("#f9-mini"); if(!el) return;
-  const P=f9Proj(), bad=f9Valid(), s2=P[1], s3=P[2], kept=s2.r.pos===2;
-  el.innerHTML=`<div class="fm-t"><small>Fight for 2nd</small><b>${esc(v4Short(s2.r))} ${kept?"keeps":"takes"} 2nd, ${s2.tot}–${s3.tot}</b>`+
-    (bad?`<span class="fm-bad">Not possible as set: pull someone down</span>`:`<span>${P.slice(0,5).map(o=>`P${o.fp} ${esc(v4Short(o.r))} ${o.tot}`).join(" · ")}</span>`)+
-    `</div><button class="fm-share" data-share aria-label="Share my prediction">${V4SHARE}</button>`;
-}
-const v4F9U=f9Update;
-f9Update=function(){v4F9U();v4F9Fill();v4F9Mini();};
-const v4RF=renderFinale;
-renderFinale=function(){
-  v4RF();
-  document.querySelectorAll("#f9-body .f9-sl").forEach(td=>{
-    const s=td.querySelector("input"), n=s.getAttribute("aria-label").replace(/^Round 9 points for /,"");
-    td.insertAdjacentHTML("afterbegin",`<button class="f9-st" data-f9s="-1" aria-label="Fewer points for ${n}">−</button>`);
-    td.insertAdjacentHTML("beforeend",`<button class="f9-st" data-f9s="1" aria-label="More points for ${n}">+</button>`);
-  });
-  v4F9Fill();
-};
-$("#f9-body").addEventListener("click",e=>{
-  const b=e.target.closest("[data-f9s]"); if(!b) return;
-  const s=b.parentElement.querySelector("input"), v=Math.max(0,Math.min(+s.max,+s.value+ +b.dataset.f9s));
-  if(v===+s.value) return;
-  s.value=v; s.dispatchEvent(new Event("input",{bubbles:true})); s.dispatchEvent(new Event("change",{bubbles:true}));
-});
 
 /* Re-draw fixed-width charts when a phone rotates */
 let v4W=innerWidth, v4rz;
