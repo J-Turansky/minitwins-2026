@@ -435,8 +435,6 @@ tbody tr.r:hover td{background:#FDF5DD}
 .rnd[aria-pressed="true"] .rnd-t{color:#fff}
 .rnd.next .rnd-t{color:#fff}
 .wx-m{color:var(--ink-2)}
-.tab-f9{color:var(--yel-2)!important;opacity:.8}
-.tab-f9[aria-selected="true"]{opacity:1}
 .sheet-btns{display:flex;gap:8px;flex-wrap:wrap}
 
 /* circuit info */
@@ -552,54 +550,11 @@ tbody tr.r:hover td{background:#FDF5DD}
 .hh-venues .q.b{box-shadow:inset 0 -3px 0 var(--blue)}
 .hh-venues span:nth-child(4n){font-size:12.5px}
 
-/* Round 9 predictor */
-.f9-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:16px;align-items:start}
-.f9-tbl tbody td{height:52px}
-.f9-tbl tr.moved td{background:#FDF5DD}
-.f9-now{display:block;font-size:12px;color:var(--ink-3)}
-.f9-sl{width:40%;min-width:140px}
-.f9-sl input{width:100%;accent-color:var(--blue);height:28px;cursor:pointer}
-.f9-add{font:800 20px/1 var(--display);color:var(--blue-ink)}
-.f9-add small{display:block;font:500 11px var(--text);color:var(--ink-3);margin-top:3px;letter-spacing:.02em}
-.f9-tot{font:800 24px/1 var(--display)}
-.f9-fp b{font:800 20px/1 var(--display)}
-.f9-side{position:sticky;top:12px;display:flex;flex-direction:column;gap:12px}
-.f9-side h3{font:600 12px/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
-.f9-warn{background:var(--ink);color:#fff;border-left:6px solid var(--blue);border-radius:8px;padding:12px 14px;font-size:13.5px}
-.f9-warn b{color:var(--yel)}
-.f9-verdict{background:var(--blue);color:#fff;border-radius:var(--r);padding:16px 18px;box-shadow:0 20px 40px -24px rgba(120,20,40,.8)}
-.f9-verdict h3{color:#FFE4E9}
-.f9-verdict b{display:block;font:800 30px/1.05 var(--display);text-transform:uppercase}
-.f9-verdict span{display:block;margin-top:6px;font-size:14px}
-.f9-board{background:var(--ink);color:#fff;border-radius:var(--r);padding:16px 18px 10px;border-top:5px solid var(--yel)}
-.f9-board h3{color:var(--yel)}
-.f9-board ol{list-style:none;margin:0;padding:0}
-.f9-board li{display:grid;grid-template-columns:26px minmax(0,1fr) 48px 38px;align-items:center;gap:6px;padding:6px 0;border-top:1px solid #2A3039;font-size:14px}
-.f9-board li:first-child{border-top:0}
-.f9-board .p{font:800 17px/1 var(--display);color:#8D96A1}
-.f9-board li:nth-child(-n+3) .p{color:var(--yel)}
-.f9-board .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.f9-board .t{font:800 19px/1 var(--display);text-align:right}
-.f9-board .m{text-align:right}
-.f9-board .mv.up{color:#6FD39C}.f9-board .mv.dn{color:#FF9DB0}
-.f9-needs{background:var(--surface);border-radius:var(--r);padding:14px 16px 8px;box-shadow:0 10px 30px -22px rgba(16,19,24,.4)}
-.f9-needs ul{list-style:none;margin:0;padding:0}
-.f9-needs li{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13px;line-height:1.4;padding:6px 0;border-top:1px solid var(--line)}
-.f9-needs li:first-child{border-top:0}
-.f9-needs em{flex:none;font-style:normal;font:600 10.5px/1 var(--text);letter-spacing:.05em;text-transform:uppercase;background:var(--yel);padding:4px 6px 3px;border-radius:3px}
-.f9-fc{background:var(--yel);border-radius:var(--r);padding:14px 16px}
-.fc-days{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.fc-days div{display:flex;flex-direction:column}
-.fc-days b{font:800 18px/1.1 var(--display);text-transform:uppercase}
-.fc-days span{font-size:13px;color:#2B2511}
-.fc-days span:nth-of-type(1){font:800 26px/1.1 var(--display);color:var(--ink)}
-.f9-fc p{margin:10px 0 0;font-size:12px;color:#3A2A00}
-#f9-more{margin-top:12px}
+
 
 @media (max-width:1000px){
   .rc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .hh-grid,.f9-grid,.rc-mom-box{grid-template-columns:minmax(0,1fr)}
-  .f9-side{position:static}
+  .hh-grid,.rc-mom-box{grid-template-columns:minmax(0,1fr)}
   .hh-pre{margin-left:0}
 }
 @media (max-width:640px){
@@ -617,14 +572,10 @@ tbody tr.r:hover td{background:#FDF5DD}
   .duel.q{gap:2px}
   .hh-venues{grid-template-columns:minmax(0,1.2fr) auto auto}
   .hh-venues span:nth-child(4n){display:none}
-  .f9-tbl .hide-s,.f9-now{display:none}
-  .f9-sl{min-width:110px}
-  .f9-add small{display:none}
-  .f9-tbl tbody td{padding:0 5px}
 }
 
 /* ===== v4: mobile go-live ===== */
-.tab-i,.tab-s,.m-share,.bt-dots,.f9-mini,.f9-st,.wx-swipe{display:none}
+.tab-i,.tab-s,.m-share,.bt-dots,.wx-swipe{display:none}
 .race li{padding-left:10px}
 a.brand-mark{text-decoration:none;border-radius:2px;transition:transform .15s var(--ease)}
 a.brand-mark:active{transform:scale(.96)}
@@ -682,7 +633,6 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
   .tab[aria-selected="true"] .tab-i{background:var(--blue);color:#fff}
   .tab[aria-selected="true"]::after{display:none}
   .tab:active .tab-i{transform:scale(.9)}
-  .tab-f9{display:none}
   .tab:focus-visible{outline-offset:-2px}
   body:has(input[type="search"]:focus) .tabs{transform:translateY(115%)}
   .foot{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
@@ -730,31 +680,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
   #rc-wx .wx-scroll svg{width:640px;max-width:none}
   .wx-swipe{display:block;margin:0;font-size:12px;font-weight:600;color:var(--blue-ink)}
 
-  /* Round 9 predictor: card rows with full-width sliders and steppers */
-  .f9-tbl{overflow:visible}
-  .f9-tbl table,.f9-tbl tbody{display:block}
-  .f9-tbl thead{display:none}
-  .f9-tbl tbody tr{display:grid;grid-template-columns:minmax(0,1fr) 54px 64px;grid-template-areas:"n t p" "s s a";align-items:center;column-gap:8px;padding:10px 12px 6px;border-bottom:1px solid var(--line)}
-  .f9-tbl tbody tr:last-child{border-bottom:0}
-  .f9-tbl tbody td{display:block;height:auto;padding:0;border:0;background:none}
-  .f9-tbl tbody td:nth-child(2){grid-area:n;white-space:normal}
-  .f9-tbl tr.moved{background:#FDF5DD}
-  .f9-tbl tr.moved td{background:none}
-  .f9-tbl .f9-sl{grid-area:s;width:auto;min-width:0;display:flex;align-items:center;gap:8px}
-  .f9-tbl .f9-tot{grid-area:t;width:auto;text-align:right}
-  .f9-tbl .f9-fp{grid-area:p;text-align:right}
-  .f9-tbl .f9-add.hide-s{grid-area:a;display:block;text-align:right;font-size:19px}
-  .f9-st{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--paper-2);color:var(--ink);font:800 24px/1 var(--display);-webkit-tap-highlight-color:transparent}
-  .f9-st:active{background:var(--ink);color:var(--yel)}
-  .f9-sl input{-webkit-appearance:none;appearance:none;flex:1 1 auto;min-width:0;height:44px;margin:0;background:transparent;touch-action:pan-y}
-  .f9-sl input::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--blue) 0 var(--v,0%),#E3D8BE var(--v,0%) 100%)}
-  .f9-sl input::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:var(--surface);border:4px solid var(--blue);box-shadow:0 2px 6px rgba(16,19,24,.3)}
-  .f9-sl input:active::-webkit-slider-thumb{background:var(--yel)}
-  .f9-sl input::-moz-range-track{height:8px;border-radius:4px;background:#E3D8BE}
-  .f9-sl input::-moz-range-progress{height:8px;border-radius:4px;background:var(--blue)}
-  .f9-sl input::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--surface);border:4px solid var(--blue)}
-  .f9-mini{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:6;margin:0 -16px 12px;padding:calc(9px + env(safe-area-inset-top)) 16px 9px;
-    background:var(--ink);color:#fff;border-bottom:4px solid var(--blue);box-shadow:0 12px 22px -16px rgba(16,19,24,.8)}
+  
   .fm-t{flex:1;min-width:0}
   .fm-t small{display:block;font:600 10.5px/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--yel)}
   .fm-t b{display:block;font:800 20px/1.1 var(--display);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -803,6 +729,25 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 .foot-more summary:focus-visible{outline:2px solid var(--yel);outline-offset:4px;border-radius:2px}
 .foot-body{padding-top:12px;margin-top:10px;border-top:1px solid #2A3039}
 @media (max-width:640px){.foot{padding-top:12px}}
+.mast-meta .mm-s{display:none}
+@media (max-width:640px){
+.mast .wrap{gap:10px}
+.mast-meta{display:block;margin-left:auto;font-size:11.5px;line-height:1.3;white-space:nowrap;text-align:right}
+.brand-sub{font-size:12px}
+.mast-meta .mm-l{display:none}
+.mast-meta .mm-s{display:inline}
+.lead{gap:14px;padding:16px 0 22px}
+.board{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:6px}
+.board-row.sm:nth-child(2){display:none}
+.board-row,.board-row.sm{font-size:26px;padding:7px 8px 5px;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:3px}
+.board-row small{font-size:10px}
+.lead h1{font-size:32px;margin:0 0 10px;max-width:none}
+.lead p{font-size:15px;line-height:1.5;margin:0 0 8px}
+#lead-copy p:nth-of-type(2){display:none}
+.facts{flex-wrap:nowrap;justify-content:space-between;gap:8px;margin-top:10px;padding-top:10px}
+.fact{flex-direction:column;align-items:flex-start;gap:2px;font-size:11px;line-height:1.2}
+.fact b{font-size:20px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -813,7 +758,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
       <a class="brand-mark" href="./" data-home aria-label="MRO Minitwins, back to the top"><span class="m">MRO</span><span class="t">Minitwins</span></a>
       <div class="brand-sub">BMCRC-MRO Championships 2026</div>
     </div>
-    <div class="mast-meta">Standings after Round 8 of 9 · TSL Timing, printed 10 Sep 2026</div>
+    <div class="mast-meta"><span class="mm-l">Standings after Round 8 of 9 · TSL Timing, printed 10 Sep 2026</span><span class="mm-s">After R8 of 9<br>Data 10 Sep</span></div>
     <button class="m-share" data-share aria-label="Share this view"><svg width="22" height="22" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.5V3M6.5 6.5 10 3l3.5 3.5M6.5 9H4.5v8h11V9h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </header>
@@ -987,10 +932,9 @@ const ROUNDS=[
   {v:"Donington Park National",d:"25–26 Jul"},
   {v:"Cadwell Park",d:"15–16 Aug"},
   {v:"Snetterton 300",d:"5–6 Sep"},
-  {v:"Brands Hatch Indy",d:"3–4 Oct",next:true}
+  {v:"Brands Hatch Indy",d:"3–4 Oct"}
 ];
-const DONE=8, RACES=DONE*4, LEFT=100;
-// name, total, wins, seconds, thirds, eight rounds of four races ("." = no points)
+// name, total, wins, seconds, thirds, then four races per round ("." = no points); rows come from season.json
 const RAW=[
 ["Ronnie HARRIS",760,24,8,0,"25 25 20 25|25 25 25 25|25 20 25 20|25 25 25 25|25 25 20 25|25 20 20 25|25 25 20 25|25 25 20 25"],
 ["Bill HARRIS",539,4,14,6,". . 13 11|20 . 20 20|16 25 20 25|16 13 16 16|20 20 25 20|20 13 13 20|16 20 16 20|20 20 25 20"],
@@ -1029,6 +973,8 @@ const RAW=[
 ["Danny BRENNAN",2,0,0,0,". . . .|. . . .|. . . .|. . . .|. . . .|. . . .|. . . .|. 2 . ."],
 ["Stephen WILSON",2,0,0,0,". . . .|. . . .|. . . .|. . . .|. . . .|. . . .|. . . .|. . 1 1"]
 ];
+const DONE=RAW[0][5].split("|").length, RACES=DONE*4, FINAL=DONE>=ROUNDS.length, LEFT=FINAL?0:100;
+if(!FINAL) ROUNDS[DONE].next=true;
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
@@ -1080,7 +1026,10 @@ $("#board").innerHTML=`
   <div class="board-row"><span>+${L.pts-second.pts}</span><small>pts</small></div>
   <div class="board-row sm"><span>${L.w} / ${RACES}</span><small>wins</small></div>`;
 const lowest=Math.max(...L.races.map(posOf));
-$("#lead-copy").innerHTML=`
+$("#lead-copy").innerHTML=FINAL?`
+  <p><strong>Champion by ${L.pts-second.pts} points</strong>, Ronnie Harris won ${L.w} of the ${RACES} races and never finished lower than ${ord(lowest)}.</p>
+  <p>${esc(nice(second))} took second, ${second.pts-riders[2].pts} points clear of ${esc(nice(riders[2]))}.</p>
+  <p>It was the second year running the title was settled with a round to spare: David Twyford wrapped up 2025 at the same Brands Hatch Indy weekend.</p>`:`
   <p><strong>${L.pts-second.pts} points clear with only ${LEFT} left to race</strong>, Ronnie Harris cannot be caught. He won ${L.w} of the ${RACES} races so far and never finished lower than ${ord(lowest)}.</p>
   <p>Behind him the fight for second is still open: Bill Harris leads William Howarth by ${second.pts-riders[2].pts} going into the Brands Hatch finale.</p>
   <p>It is the second year running the title has been settled with a round to spare: David Twyford wrapped up 2025 at the same Brands Hatch Indy weekend.</p>`;
@@ -1093,7 +1042,7 @@ $("#facts").innerHTML=[
 
 /* Battles */
 function battleGroups(){
-  const out=[{title:"Fight for 2nd",riders:[riders[1],riders[2]]}];
+  const out=[{title:FINAL?"2nd place":"Fight for 2nd",riders:[riders[1],riders[2]]}];
   let g=[riders[3]];
   for(let i=4;i<24;i++){
     if(riders[i].diff<=10) g.push(riders[i]);
@@ -1184,7 +1133,7 @@ function stripHTML(r){
   return `<div class="strip">${h}</div>`;
 }
 function barsSVG(r){
-  const W=360,H=120,bw=30,gap=(W-bw*8)/7,max=100;
+  const n=r.rounds.length,W=360,H=120,bw=n>8?26:30,gap=(W-bw*n)/(n-1),max=100;
   let s=`<svg class="bars" viewBox="0 0 ${W} ${H+30}" width="100%" style="max-width:${W}px" role="img" aria-label="Points per round">`;
   r.rounds.forEach((v,k)=>{
     const h=Math.max(v/max*H,v?2:0), x=k*(bw+gap), y=H-h+14;
@@ -1196,7 +1145,8 @@ function barsSVG(r){
   return s+`</svg>`;
 }
 function mathText(r){
-  if(r.bestPos===1&&r.worstPos===1) return ["Champion","Nobody can reach his total with 100 points left."];
+  if(FINAL) return [`P${r.pos}`,r.pos===1?"2026 champion.":"Final championship position."];
+  if(r.bestPos===1&&r.worstPos===1) return ["Champion",`Nobody can reach his total with ${LEFT} points left.`];
   const range=r.bestPos===r.worstPos?`P${r.bestPos}`:`P${r.bestPos}–P${r.worstPos}`;
   let sub;
   if(r.bestPos===r.pos&&r.worstPos===r.pos) sub=`Locked into ${ord(r.pos)} whatever happens at Brands Hatch.`;
@@ -1210,7 +1160,7 @@ function detailHTML(r){
   const form=r.last4.map(p=>p?ord(posOf(p)):"–").join(", ");
   return `<tr class="detail"><td colspan="11"><div class="det">
     <div>
-      <h3>Title maths</h3>
+      <h3>${FINAL?"Final position":"Title maths"}</h3>
       <div class="math">${m}</div>
       <div class="math-sub">${sub}</div>
       <div class="det-btns"><button class="btn" data-compare="${r.id}" aria-pressed="${chartSel.includes(r.id)}">${chartSel.includes(r.id)?"Shown in points chase":"Add to points chase"}</button>
@@ -1262,9 +1212,9 @@ function renderTable(){
       <td class="num gap col-gap">${r.gap?`−${r.gap}`:`<span class="muted">–</span>`}</td>
       <td class="num diff col-gap${r.diff&&r.diff<=5||r.pos>1&&r.diff===0?" close":""}">${r.pos===1?`<span class="muted">–</span>`:r.diff===0?"level":`−${r.diff}`}</td>
       <td class="col-strip">${stripHTML(r)}</td>
-      <td class="num wst col-wst${r.w?"":" zero"}">${r.w}</td>
-      <td class="num wst col-wst${r.s?"":" zero"}">${r.s}</td>
-      <td class="num wst col-wst${r.t?"":" zero"}">${r.t}</td>
+      <td class="num wst col-wst${r.w?"":" zero"}">${r.w||"–"}</td>
+      <td class="num wst col-wst${r.s?"":" zero"}">${r.s||"–"}</td>
+      <td class="num wst col-wst${r.t?"":" zero"}">${r.t||"–"}</td>
     </tr>${open?detailHTML(r):""}`;
   }).join("");
 }
@@ -1359,7 +1309,7 @@ function renderChart(){
   const box=$("#chart"); const W=box.clientWidth||900; const narrow=W<600;
   const H=narrow?320:440, m={t:12,r:narrow?16:130,b:34,l:44};
   const iw=W-m.l-m.r, ih=H-m.t-m.b;
-  const steps=36; // 32 raced + 4 to come
+  const steps=ROUNDS.length*4;
   const x=k=>m.l+(k+1)/steps*iw;
   const sel=chartSel.map(id=>riders[id]);
   const val=(r,k)=>chartMode==="total"?r.cum[k]:r.cum[k]-leaderCum[k];
@@ -1369,8 +1319,10 @@ function renderChart(){
   const y=v=>m.t+(ymax-v)/(ymax-ymin)*ih;
   const tickStep=(ymax-ymin)>500?200:100;
   let s=`<svg viewBox="0 0 ${W} ${H}" height="${H}">`;
+  if(!FINAL){
   s+=`<rect class="future" x="${x(RACES-1)}" y="${m.t}" width="${x(steps-1)-x(RACES-1)}" height="${ih}" rx="4"/>`;
-  s+=`<text class="axis" x="${(x(RACES-1)+x(steps-1))/2}" y="${m.t+16}" text-anchor="middle" style="font:600 11px var(--text);fill:#8A6400">${narrow?"R9":"R9 to come"}</text>`;
+  s+=`<text class="axis" x="${(x(RACES-1)+x(steps-1))/2}" y="${m.t+16}" text-anchor="middle" style="font:600 11px var(--text);fill:#8A6400">${narrow?"R"+(DONE+1):"R"+(DONE+1)+" to come"}</text>`;
+  }
   s+=`<g class="grid">`;
   for(let v=ymin;v<=ymax;v+=tickStep) s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}"/>`;
   s+=`</g><g class="axis">`;
@@ -1819,7 +1771,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-h2h]");if(
 document.addEventListener("click",e=>{const b=e.target.closest("[data-goto]");if(b)setTab(b.dataset.goto,true);});
 
 /* Hero: finale forecast */
-if(WX&&WX.fc){const d=WX.fc.days;const hi=[...new Set(d.map(x=>Math.round(x.temperature_2m_max)))];$("#bt-fc").innerHTML=`<b>Finale forecast</b> Highs of ${hi.join(" and ")}°C, ${d.every(x=>x.precipitation_probability_max<30)?`rain chance under ${Math.max(...d.map(x=>x.precipitation_probability_max))+4-(Math.max(...d.map(x=>x.precipitation_probability_max))+4)%5}%`:"some rain risk"}.`;}
+if(!FINAL&&WX&&WX.fc){const d=WX.fc.days;const hi=[...new Set(d.map(x=>Math.round(x.temperature_2m_max)))];$("#bt-fc").innerHTML=`<b>Finale forecast</b> Highs of ${hi.join(" and ")}°C, ${d.every(x=>x.precipitation_probability_max<30)?`rain chance under ${Math.max(...d.map(x=>x.precipitation_probability_max))+4-(Math.max(...d.map(x=>x.precipitation_probability_max))+4)%5}%`:"some rain risk"}.`;}
 
 /* ===== v4: mobile go-live, deep links, sharing ===== */
 const v4Mob=()=>matchMedia("(max-width:640px)").matches;
@@ -1828,7 +1780,6 @@ const V4SHARE=`<svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true
 const V4STAR=`<svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="m10 2.8 2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L2.8 8.1l5-.7z" fill="currentColor"/></svg>`;
 const slug=r=>nice(r).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const bySlug=s=>s?riders.find(r=>slug(r)===s):null;
-const v4Short=r=>`${r.first.charAt(0)}. ${r.last.charAt(0)}${r.last.slice(1).toLowerCase()}`;
 
 /* "This is me": pin your own rider on this device */
 const V4ME="mt26-me";
@@ -1925,7 +1876,7 @@ addEventListener("popstate",e=>{
 
 /* Share: native share sheet on phones, copy link elsewhere */
 function v4ShareText(){
-  if(activeTab==="st"&&openId!=null){const r=riders[openId];return `${nice(r)}: P${r.pos} on ${r.pts} points after Round ${DONE} of the 2026 MRO Minitwins.`;}
+  if(activeTab==="st"&&openId!=null){const r=riders[openId];return `${nice(r)}: P${r.pos} on ${r.pts} points ${FINAL?"in the final standings":"after Round "+DONE} of the 2026 MRO Minitwins.`;}
   if(activeTab==="hh"){const A=riders[hhA],B=riders[hhB];return `${nice(A)} v ${nice(B)}, head to head in the 2026 MRO Minitwins.`;}
   if(activeTab==="rd") return `R${tdRound+1} ${LF.rounds[tdRound].venue} timing sheets, 2026 MRO Minitwins.`;
   if(activeTab==="rs") return `Round ${resRound+1} results, 2026 MRO Minitwins.`;
@@ -2006,13 +1957,26 @@ function v4Boot(){
 }
 
 renderTrack(); renderTable();
-function gcTab(id){
-  const t=document.querySelector("#t-"+id+" .tab-l"), send=()=>{try{window.goatcounter.count({path:"tab-"+id,title:t?t.textContent:id,event:true});}catch(e){}};
+function gcEv(path,title){
+  const send=()=>{try{window.goatcounter.count({path,title:title||path,event:true});}catch(e){}};
   if(window.goatcounter&&window.goatcounter.count) send(); else addEventListener("load",send,{once:true});
 }
+function gcTab(id){const t=document.querySelector("#t-"+id+" .tab-l");gcEv("tab-"+id,t?t.textContent:id);}
+let gcRider=null;
+function gcRiderCheck(){
+  if(openId==null){gcRider=null;return;}
+  if(openId!==gcRider){gcRider=openId;const r=riders[openId];gcEv("rider-"+slug(r),"Rider: "+nice(r));}
+}
+document.addEventListener("click",e=>{
+  if(!e.target.closest) return;
+  if(e.target.closest("[data-toggle],[data-open]")) setTimeout(gcRiderCheck,0);
+  if(e.target.closest("[data-share]")) gcEv("share-"+activeTab,"Share: "+activeTab);
+  if(e.target.closest("[data-me]")) setTimeout(()=>{if(v4MeId!=null)gcEv("me-pin","This is me");},0);
+},true);
 const gcSetTab=setTab;
 setTab=function(id,focus){const prev=activeTab;gcSetTab(id,focus);if(id!==prev)gcTab(id);};
 v4Boot();
+setTimeout(gcRiderCheck,0);
 </script>
 <script data-goatcounter="https://j-turansky.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
