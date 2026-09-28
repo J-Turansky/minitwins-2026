@@ -790,6 +790,19 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
   #battles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:22px}
 }
 
+
+.foot{padding-top:14px;font-size:12.5px}
+@media (min-width:641px){.foot{padding-bottom:16px}}
+.foot-more summary{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;cursor:pointer;list-style:none;min-height:32px}
+.foot-more summary::-webkit-details-marker{display:none}
+.foot-by{color:#D8CFB8}
+.foot-tg{display:inline-flex;align-items:center;gap:6px;color:var(--yel);font-weight:600;white-space:nowrap}
+.foot-tg::after{content:"";width:7px;height:7px;border:solid currentColor;border-width:0 2px 2px 0;transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.foot-more[open] .foot-tg::after{transform:translateY(1px) rotate(-135deg)}
+.foot-more summary:hover .foot-tg{color:#fff}
+.foot-more summary:focus-visible{outline:2px solid var(--yel);outline-offset:4px;border-radius:2px}
+.foot-body{padding-top:12px;margin-top:10px;border-top:1px solid #2A3039}
+@media (max-width:640px){.foot{padding-top:12px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -949,10 +962,15 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 
 <footer class="foot">
   <div class="wrap">
+  <details class="foot-more">
+    <summary><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-tg">Sources and notes</span></summary>
+    <div class="foot-body">
     <p>Source: TSL Timing championship table for the Properly Protected MRO Minitwins, printed 10:47 Thursday 10 September 2026.</p>
     <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15, a retirement, or a non-start. Final-position ranges assume a maximum of 100 points in Round 9 and ignore tie-break countback.</p>
     <p>Timing sheets: the eight TSL round leaflets (grid, classification and sector analysis for qualifying and all four races). Positions and grids are class positions. The Rookie Minitwins who share the grid have their own view in the timing sheets and score no points here. Riders marked guest ran without championship registration. Championship points always come from the official table; a few riders ran without a working transponder and have no lap-by-lap data.</p>
     <p>Weather: Open-Meteo historical model at each circuit, read at the start time of every session, plus the Open-Meteo forecast for the finale. Modelled values, not trackside readings; wet or dry always follows the leaflet. Corner names and circuit facts: the circuits' own guides and Wikipedia. The 2025 title detail comes from the ACU report on Round 8 at Brands Hatch Indy.</p>
+    </div>
+  </details>
   </div>
 </footer>
 
