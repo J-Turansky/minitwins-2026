@@ -748,6 +748,13 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 .fact{flex-direction:column;align-items:flex-start;gap:2px;font-size:11px;line-height:1.2}
 .fact b{font-size:20px}
 }
+.hh-reset{height:42px;padding:0 14px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;font:600 14px var(--text);color:var(--ink);background:var(--surface);border:1px solid var(--line);align-self:flex-end}
+.hh-reset:hover:not(:disabled){border-color:var(--ink)}
+.hh-reset:disabled,.hh-swap:disabled{opacity:.4;cursor:default}
+.hh-share[hidden]{display:none!important}
+.hh-reset:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.hh-empty{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:48px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--ink-2);margin-top:16px}
+.hh-empty b{font:800 22px/1.1 var(--display);text-transform:uppercase;color:var(--ink)}
 .foot-id{display:flex;flex-direction:column;gap:2px}
 .foot-upd{font-size:11.5px;color:#8F887A}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -899,6 +906,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
       <label class="hh-pick a"><span>Rider A</span><select id="hh-a"></select></label>
       <button class="hh-swap" id="hh-swap" aria-label="Swap riders"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 6h10l-3-3M14 12H4l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <label class="hh-pick b"><span>Rider B</span><select id="hh-b"></select></label>
+      <button class="hh-reset" id="hh-reset" type="button" aria-label="Clear both riders"><svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true"><path d="M3.5 9a5.5 5.5 0 1 0 1.6-3.9M3.5 3.5v3h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Reset</button>
       <div class="hh-pre"><span class="muted">Closest fights</span><div class="seg" role="group" aria-label="Preset battles" id="hh-pre"></div></div>
       <button class="btn btn-share hh-share" data-share><svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.5V3M6.5 6.5 10 3l3.5 3.5M6.5 9H4.5v8h11V9h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Share this duel</button>
     </div>
@@ -910,7 +918,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 <footer class="foot">
   <div class="wrap">
   <details class="foot-more">
-    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-09-28T12:17">28 Sep 2026, 12:17</time></span></span><span class="foot-tg">Sources and notes</span></summary>
+    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-09-28T12:21">28 Sep 2026, 12:21</time></span></span><span class="foot-tg">Sources and notes</span></summary>
     <div class="foot-body">
     <p>Source: TSL Timing championship table for the Properly Protected MRO Minitwins, printed 10:47 Thursday 10 September 2026.</p>
     <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15, a retirement, or a non-start. Final-position ranges assume a maximum of 100 points in Round 9 and ignore tie-break countback.</p>
@@ -1718,9 +1726,12 @@ function hhGapSVG(A,B){
 }
 function renderH2H(){
   const A=riders[hhA],B=riders[hhB];
-  const opts=sel=>riders.map(r=>`<option value="${r.id}"${r.id===sel?" selected":""}>P${r.pos} · ${esc(nice(r))}</option>`).join("");
+  const opts=sel=>`<option value=""${sel==null?" selected":""} disabled>Choose a rider</option>`+riders.map(r=>`<option value="${r.id}"${r.id===sel?" selected":""}>P${r.pos} · ${esc(nice(r))}</option>`).join("");
   $("#hh-a").innerHTML=opts(hhA); $("#hh-b").innerHTML=opts(hhB);
   $("#hh-pre").innerHTML=hhPairs.map(([a,b])=>`<button data-hp="${a},${b}" aria-pressed="${a===hhA&&b===hhB}">P${riders[a].pos} v P${riders[b].pos}</button>`).join("");
+  const ready=!!(A&&B);
+  $("#hh-reset").disabled=hhA==null&&hhB==null; $("#hh-swap").disabled=!ready; document.querySelector(".hh-share").hidden=!ready;
+  if(!ready){$("#hh").innerHTML=`<div class="hh-empty"><b>Pick two riders</b><span>Choose Rider A and Rider B above, or tap one of the closest fights.</span></div>`;return;}
   const pa=hhProf(A),pb=hhProf(B);
   let wa=0,wb=0;
   const rows=HHROWS.map(([lab,key,fmt,low,note])=>{
@@ -1765,8 +1776,9 @@ function renderH2H(){
     </div>
   </div>`;
 }
-$("#hh-a").addEventListener("change",e=>{hhA=+e.target.value;if(hhA===hhB)hhB=riders[(riders[hhA].pos)%riders.length].id;renderH2H();});
-$("#hh-b").addEventListener("change",e=>{hhB=+e.target.value;if(hhA===hhB)hhA=riders[(riders[hhB].pos)%riders.length].id;renderH2H();});
+$("#hh-reset").addEventListener("click",()=>{hhA=hhB=null;renderH2H();if(typeof v4Sync==="function")v4Sync(false);$("#hh-a").focus();});
+$("#hh-a").addEventListener("change",e=>{hhA=+e.target.value;if(hhB!=null&&hhA===hhB)hhB=riders[(riders[hhA].pos)%riders.length].id;renderH2H();});
+$("#hh-b").addEventListener("change",e=>{hhB=+e.target.value;if(hhA!=null&&hhA===hhB)hhA=riders[(riders[hhB].pos)%riders.length].id;renderH2H();});
 $("#hh-swap").addEventListener("click",()=>{[hhA,hhB]=[hhB,hhA];renderH2H();});
 $("#hh-pre").addEventListener("click",e=>{const b=e.target.closest("[data-hp]");if(!b)return;[hhA,hhB]=b.dataset.hp.split(",").map(Number);renderH2H();});
 document.addEventListener("click",e=>{const b=e.target.closest("[data-h2h]");if(!b)return;const r=riders[+b.dataset.h2h];hhA=r.id;hhB=(r.pos===1?riders[1]:riders[r.pos-2]).id;setTab("hh",true);});
@@ -1828,7 +1840,7 @@ function v4Hash(){
   if(activeTab==="st") return openId!=null&&riders[openId]?`#rider/${slug(riders[openId])}`:"#st";
   if(activeTab==="rs") return `#rs/${resRound+1}`;
   if(activeTab==="rd") return `#rd/${tdRound+1}/${tdSess}`;
-  if(activeTab==="hh") return `#hh/${slug(riders[hhA])}/${slug(riders[hhB])}`;
+  if(activeTab==="hh") return hhA!=null&&hhB!=null?`#hh/${slug(riders[hhA])}/${slug(riders[hhB])}`:"#hh";
   return "#"+activeTab;
 }
 let v4Pop=false;
@@ -1879,7 +1891,7 @@ addEventListener("popstate",e=>{
 /* Share: native share sheet on phones, copy link elsewhere */
 function v4ShareText(){
   if(activeTab==="st"&&openId!=null){const r=riders[openId];return `${nice(r)}: P${r.pos} on ${r.pts} points ${FINAL?"in the final standings":"after Round "+DONE} of the 2026 MRO Minitwins.`;}
-  if(activeTab==="hh"){const A=riders[hhA],B=riders[hhB];return `${nice(A)} v ${nice(B)}, head to head in the 2026 MRO Minitwins.`;}
+  if(activeTab==="hh"&&hhA!=null&&hhB!=null){const A=riders[hhA],B=riders[hhB];return `${nice(A)} v ${nice(B)}, head to head in the 2026 MRO Minitwins.`;}
   if(activeTab==="rd") return `R${tdRound+1} ${LF.rounds[tdRound].venue} timing sheets, 2026 MRO Minitwins.`;
   if(activeTab==="rs") return `Round ${resRound+1} results, 2026 MRO Minitwins.`;
   return `2026 MRO Minitwins: standings, results and timing sheets.`;
