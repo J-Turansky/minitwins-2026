@@ -755,6 +755,23 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 .hh-reset:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .hh-empty{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;padding:48px 16px;border:1px dashed var(--line);border-radius:10px;color:var(--ink-2);margin-top:16px}
 .hh-empty b{font:800 22px/1.1 var(--display);text-transform:uppercase;color:var(--ink)}
+.track{scrollbar-width:none}.track::-webkit-scrollbar{display:none}
+.track.ovf{margin-bottom:8px}
+.track.ovf.more-r{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent)}
+.track.ovf.more-l{-webkit-mask-image:linear-gradient(90deg,transparent,#000 36px);mask-image:linear-gradient(90deg,transparent,#000 36px)}
+.track.ovf.more-l.more-r{-webkit-mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent)}
+.trk-bar{display:flex;align-items:center;gap:12px;margin:0 0 24px}
+.trk-bar[hidden]{display:none}
+.trk-rail{position:relative;flex:1;height:4px;border-radius:2px;background:var(--line);cursor:pointer;touch-action:none}
+.trk-rail::before{content:"";position:absolute;inset:-12px 0}
+.trk-rail i{position:absolute;top:0;bottom:0;left:0;border-radius:2px;background:var(--blue)}
+.trk-lab{font:600 12px/1 var(--text);color:var(--ink-2);white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.trk-lab .ar{display:inline-block;color:var(--blue);animation:trk-ar 1.4s var(--ease) infinite}
+@keyframes trk-ar{0%,100%{transform:none}50%{transform:translateX(4px)}}
+@media (max-width:640px){
+.track{grid-template-columns:repeat(9,140px);margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px;scroll-padding:0 16px}
+.track.ovf{margin-left:-16px;margin-right:-16px}
+}
 .foot-id{display:flex;flex-direction:column;gap:2px}
 .foot-upd{font-size:11.5px;color:#8F887A}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -789,6 +806,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
   </section>
 
   <nav class="track" id="track" aria-label="Season rounds"></nav>
+  <div class="trk-bar" id="trk-bar" hidden><span class="trk-rail" aria-hidden="true"><i></i></span><span class="trk-lab" aria-live="polite"></span></div>
 
   <div class="tabs" role="tablist" aria-label="Views">
     <button class="tab" role="tab" id="t-st" aria-controls="p-st" aria-selected="true"><span class="tab-i" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17h15M4 17v-5h4v5M8 17V6.5h4V17M12 17v-7.5h4V17"/></svg></span><span class="tab-l">Standings</span><span class="tab-s">Table</span></button>
@@ -918,7 +936,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 <footer class="foot">
   <div class="wrap">
   <details class="foot-more">
-    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-09-28T12:21">28 Sep 2026, 12:21</time></span></span><span class="foot-tg">Sources and notes</span></summary>
+    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-09-28T12:27">28 Sep 2026, 12:27</time></span></span><span class="foot-tg">Sources and notes</span></summary>
     <div class="foot-body">
     <p>Source: TSL Timing championship table for the Properly Protected MRO Minitwins, printed 10:47 Thursday 10 September 2026.</p>
     <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15, a retirement, or a non-start. Final-position ranges assume a maximum of 100 points in Round 9 and ignore tie-break countback.</p>
@@ -1989,6 +2007,37 @@ document.addEventListener("click",e=>{
 },true);
 const gcSetTab=setTab;
 setTab=function(id,focus){const prev=activeTab;gcSetTab(id,focus);if(id!==prev)gcTab(id);};
+/* Round track: fades, position bar and a one-off nudge so the sideways scroll is obvious */
+function trkInit(){
+  const tr=$("#track"), bar=$("#trk-bar"), th=bar.querySelector("i"), lab=bar.querySelector(".trk-lab"), rail=bar.querySelector(".trk-rail"), n=ROUNDS.length;
+  let raf, touched=false;
+  const upd=()=>{
+    const ovf=tr.scrollWidth>tr.clientWidth+4;
+    tr.classList.toggle("ovf",ovf); bar.hidden=!ovf; if(!ovf) return;
+    const max=tr.scrollWidth-tr.clientWidth, x=tr.scrollLeft, f=tr.clientWidth/tr.scrollWidth;
+    tr.classList.toggle("more-l",x>4); tr.classList.toggle("more-r",x<max-4);
+    th.style.width=(f*100)+"%"; th.style.left=(max?x/max*(1-f)*100:0)+"%";
+    const L=tr.getBoundingClientRect().left, R=L+tr.clientWidth, vis=[...tr.children].map((c,i)=>{const r=c.getBoundingClientRect();return r.left+r.width/2>L&&r.left+r.width/2<R?i+1:0;}).filter(Boolean);
+    const a=vis[0]||1, b=vis[vis.length-1]||a;
+    lab.innerHTML=x<=4?`Swipe for all ${n} rounds <span class="ar" aria-hidden="true">→</span>`:`R${a}–R${b} of ${n}`;
+  };
+  tr.addEventListener("scroll",()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(upd);},{passive:true});
+  addEventListener("resize",()=>requestAnimationFrame(upd));
+  ["pointerdown","touchstart","wheel"].forEach(ev=>tr.addEventListener(ev,()=>{touched=true;},{passive:true}));
+  const jump=e=>{const r=rail.getBoundingClientRect(),p=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width));tr.scrollTo({left:p*(tr.scrollWidth-tr.clientWidth),behavior:v4Calm()?"auto":"smooth"});};
+  rail.addEventListener("click",jump);
+  const mo=new MutationObserver(()=>requestAnimationFrame(upd)); mo.observe(tr,{childList:true});
+  upd(); if(document.fonts) document.fonts.ready.then(upd);
+  if(v4Calm()||!("IntersectionObserver" in window)) return;
+  const io=new IntersectionObserver(es=>{
+    if(!es.some(e=>e.isIntersecting)) return; io.disconnect();
+    if(touched||tr.scrollLeft>4||tr.scrollWidth<=tr.clientWidth+4) return;
+    setTimeout(()=>{ if(touched) return; tr.style.scrollSnapType="none"; tr.scrollTo({left:72,behavior:"smooth"});
+      setTimeout(()=>{ tr.scrollTo({left:0,behavior:"smooth"}); setTimeout(()=>{tr.style.scrollSnapType="";},500); },550); },600);
+  },{threshold:.7});
+  io.observe(tr);
+}
+trkInit();
 v4Boot();
 setTimeout(gcRiderCheck,0);
 </script>
