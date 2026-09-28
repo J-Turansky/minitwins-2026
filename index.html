@@ -1988,6 +1988,12 @@ function v4Boot(){
 }
 
 renderTrack(); renderTable();
+function gcTab(id){
+  const t=document.querySelector("#t-"+id+" .tab-l"), send=()=>{try{window.goatcounter.count({path:"tab-"+id,title:t?t.textContent:id,event:true});}catch(e){}};
+  if(window.goatcounter&&window.goatcounter.count) send(); else addEventListener("load",send,{once:true});
+}
+const gcSetTab=setTab;
+setTab=function(id,focus){const prev=activeTab;gcSetTab(id,focus);if(id!==prev)gcTab(id);};
 v4Boot();
 </script>
 <script data-goatcounter="https://j-turansky.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
