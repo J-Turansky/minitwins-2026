@@ -154,8 +154,8 @@ thead th.num{text-align:right}
 .sortbtn{display:inline-flex;align-items:center;gap:4px;letter-spacing:inherit;text-transform:inherit;font:inherit;color:inherit}
 .sortbtn:hover{color:var(--ink)}
 .sortbtn svg{opacity:.35;transition:opacity .15s,transform .15s}
-.sortbtn[aria-sort="descending"] svg{opacity:1;color:var(--blue-ink)}
-.sortbtn[aria-sort="ascending"] svg{opacity:1;color:var(--blue-ink);transform:rotate(180deg)}
+th[aria-sort="descending"] svg{opacity:1;color:var(--blue-ink)}
+th[aria-sort="ascending"] svg{opacity:1;color:var(--blue-ink);transform:rotate(180deg)}
 tbody td{padding:0 10px;height:46px;border-bottom:1px solid var(--line);white-space:nowrap}
 tbody tr.r:hover td{background:#FAF9F6}
 tbody tr.r.open td{background:#FCF6E6;border-bottom-color:transparent}
@@ -369,7 +369,7 @@ body{background:#F7F1E1}
 .tbl-wrap{border:0;box-shadow:0 1px 0 var(--line),0 10px 30px -22px rgba(16,19,24,.4)}
 thead th{background:var(--ink);color:#EDE6D2;border-bottom:4px solid var(--yel)}
 .sortbtn:hover{color:#fff}
-.sortbtn[aria-sort="descending"] svg,.sortbtn[aria-sort="ascending"] svg{color:var(--yel)}
+th[aria-sort="descending"] svg,th[aria-sort="ascending"] svg{color:var(--yel)}
 tbody tr.r:hover td{background:#FDF5DD}
 .pos.p1{color:var(--blue)}
 .btn{border-color:var(--ink)}
@@ -651,7 +651,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
   .battle{flex:0 0 84%;scroll-snap-align:start;border:1px solid var(--line);border-radius:10px;padding:12px 14px 14px;background:#FFFCF4}
   .battle-riders{line-height:1.95}
   .bt-dots{display:flex;justify-content:center;gap:0;padding:4px 0 0}
-  .bt-dots button{width:26px;height:24px;display:grid;place-items:center}
+  .bt-dots button{width:44px;height:44px;display:grid;place-items:center}
   .bt-dots button::before{content:"";width:7px;height:7px;border-radius:4px;background:var(--line-2);transition:width .2s var(--ease),background-color .2s}
   .bt-dots button[aria-current="true"]::before{width:20px;background:var(--blue)}
   .bt-foot{margin:8px 16px 0}
@@ -774,6 +774,9 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 .track{grid-template-columns:repeat(9,140px);margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px;scroll-padding:0 16px}
 .track.ovf{margin-left:-16px;margin-right:-16px}
 }
+.sortbtn{min-height:44px;min-width:44px}
+.ver{min-height:44px}
+.battle-riders .bt-more{min-height:44px;text-decoration:underline;text-underline-offset:3px}
 .foot-id{display:flex;flex-direction:column;gap:2px}
 .foot-upd{font-size:11.5px;color:#8F887A}
 .bt-foot[hidden]{display:none!important}
@@ -854,7 +857,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
       <a class="brand-mark" href="./" data-home aria-label="MRO Minitwins, back to the top"><span class="m">MRO</span><span class="t">Minitwins</span></a>
       <div class="brand-sub">BMCRC-MRO Championships 2026</div>
     </div>
-    <div class="mast-meta"><span class="mm-l">Final standings · Data from TSL Timing, 4 Oct 2026</span><span class="mm-s">Final standings<br>Data 4 Oct</span></div>
+    <div class="mast-meta"><span class="mm-l">Unofficial final standings · Data from TSL Timing, 4 Oct 2026</span><span class="mm-s">Unofficial final<br>Data 4 Oct</span></div>
     <button class="m-share" data-share aria-label="Share this view"><svg width="22" height="22" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.5V3M6.5 6.5 10 3l3.5 3.5M6.5 9H4.5v8h11V9h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </header>
@@ -924,9 +927,9 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
           <th scope="col" class="num col-gap">Gap</th>
           <th scope="col" class="num col-gap" title="Points behind the rider one place ahead">Ahead</th>
           <th scope="col" class="col-strip">Every race, R1 to R9</th>
-          <th scope="col" class="num col-wst"><button class="sortbtn" data-sort="w" title="Wins">1st<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
-          <th scope="col" class="num col-wst"><button class="sortbtn" data-sort="s" title="Second places">2nd<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
-          <th scope="col" class="num col-wst"><button class="sortbtn" data-sort="t" title="Third places">3rd<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
+          <th scope="col" class="num col-wst"><button class="sortbtn" data-sort="w" title="Minitwins class wins">1st<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
+          <th scope="col" class="num col-wst"><button class="sortbtn" data-sort="s" title="Minitwins class second-place finishes">2nd<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
+          <th scope="col" class="num col-wst"><button class="sortbtn" data-sort="t" title="Minitwins class third-place finishes">3rd<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
         </tr></thead>
         <tbody id="tb"></tbody>
       </table>
@@ -952,6 +955,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
       <h2 class="res-title" id="res-title"></h2>
       <div class="seg" role="group" aria-label="Round" id="res-seg"></div>
     </div>
+    <p class="rd-hint">Championship scoring positions, not full race classifications. Guests and rookies are excluded; use Timing sheets for actual class finishes.</p>
     <div class="res-grid" id="res-grid"></div>
   </section>
 
@@ -1005,15 +1009,16 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 <footer class="foot">
   <div class="wrap">
   <details class="foot-more">
-    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T18:04">4 Oct 2026, 18:04</time></span></span><span class="foot-tg">Sources and notes</span></summary>
+    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T18:20">4 Oct 2026, 18:20</time></span></span><span class="foot-tg">Sources and notes</span></summary>
     <div class="foot-body">
-    <p>Source: TSL Timing championship table for the Properly Protected MRO Minitwins, printed 15:55 Sunday 4 October 2026.</p>
+    <p>Sources: <a href="https://www.tsl-timing.com/">TSL Timing results archive</a> · <a href="https://www.tsl-timing.com/event/264079">Round 9 event results</a> · <a href="https://www.tsl-timing.com/file/?f=BMCRC/2026/264079mtw.pdf">Round 9 Minitwins timing PDF</a>.</p>
+    <p>Unofficial standings compiled from the championship table through Round 8 and Round 9 race results. Round 9 points were calculated using the championship scoring scale, excluding ineligible riders; they have not been reconciled against an official final championship table.</p>
     <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15 registered riders, a retirement, or a non-start. Guests and rookies do not score, so registered riders behind them move up into the points.</p>
-    <p>Timing sheets: the nine TSL round leaflets (grid, classification and sector analysis for qualifying and all four races). Positions and grids are class positions. The Rookie Minitwins who share the grid have their own view in the timing sheets and score no points here. Riders marked guest ran without championship registration. Championship points always come from the official table; a few riders ran without a working transponder and have no lap-by-lap data.</p>
+    <p>Timing sheets: the nine TSL round leaflets (grid, classification and sector analysis for qualifying and all four races). Positions and grids are class positions. The Rookie Minitwins who share the grid have their own view in the timing sheets and score no points here. Riders marked guest ran without championship registration. Points through Round 8 come from the championship table; Round 9 points are calculated from race classifications; a few riders ran without a working transponder and have no lap-by-lap data.</p>
     <p>Weather: Open-Meteo historical model at each circuit, read at the start time of every session. Modelled values, not trackside readings; wet or dry always follows the leaflet. Corner names and circuit facts: the circuits' own guides and Wikipedia.</p>
     </div>
   </details>
-  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.23</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
+  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.24</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
   </div>
 </footer>
 
@@ -1077,8 +1082,15 @@ if(!FINAL) ROUNDS[DONE].next=true;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 // Bump version and add a CHANGELOG entry on every code change; keep the How to use guide current.
-const APP_VERSION="4.23";
+const APP_VERSION="4.24";
 const CHANGELOG=[
+  {version:"4.24",date:"2026-10-04",items:[
+    "Finish and podium statistics now use actual Minitwins class classifications; championship points and scoring positions remain unchanged.",
+    "Clarified the unofficial standings provenance and added direct links to TSL sources.",
+    "Shared timing links preserve the Minitwins or Rookies class selection.",
+    "The mobile +N more button opens the full group in the standings without resizing the hero.",
+    "Improved sorting announcements, keyboard carousel access and small touch controls."
+  ]},
   {version:"4.23",date:"2026-10-04",items:[
     "On phones, the How it finished cards keep one fixed height, so swiping no longer moves the hero's pink/yellow divide. Large groups show three riders and a +N more count."
   ]},
@@ -1204,7 +1216,7 @@ $("#battles").innerHTML=battleGroups().map(b=>{
   const dots=b.riders.map((r,j)=>`<i class="${j===0?"lead-dot":""}" style="left:${spread?((a.pts-r.pts)/Math.max(scale,LEFT))*100:0}%" title="${esc(nice(r))} ${r.pts}"></i>`).join("");
   return `<div class="battle">
     <div class="battle-top"><b>${title}</b><span>${note}</span></div>
-    <div class="battle-riders">${b.riders.map((r,i)=>`<span class="br${b.riders.length>4&&i>=3?" xr":""}">${i?" · ":""}<button data-open="${r.id}">${esc(nice(r))}</button> ${r.pts}</span>`).join("")}${b.riders.length>4?`<span class="bt-more"> · +${b.riders.length-3} more</span>`:""}</div>
+    <div class="battle-riders">${b.riders.map((r,i)=>`<span class="br${b.riders.length>4&&i>=3?" xr":""}">${i?" · ":""}<button data-open="${r.id}">${esc(nice(r))}</button> ${r.pts}</span>`).join("")}${b.riders.length>4?`<button type="button" class="bt-more" data-battle="${b.riders.map(r=>r.id).join(",")}" aria-label="Show all ${b.riders.length} riders from ${title} in the standings"> · +${b.riders.length-3} more</button>`:""}</div>
     <div class="gapbar" aria-hidden="true">${dots}</div>
   </div>`;
 }).join("");
@@ -1260,7 +1272,7 @@ $("#track").addEventListener("click",e=>{
 });
 
 /* Standings */
-let sortKey="pts", query="", openId=null;
+let sortKey="pts", query="", openId=null, battleFilter=null;
 const chev=`<svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 5.5 7 9l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 function stripHTML(r){
   let h="";
@@ -1317,7 +1329,7 @@ function detailHTML(r){
       <dl class="statlist">
         <dt>Races scored</dt><dd>${r.scored} of ${RACES}</dd>
         <dt>Scoring rounds</dt><dd>${r.rds} of ${DONE}, ${r.ppr.toFixed(1)} pts per round (${ord(r.pprRank)} of ${riders.length})</dd>
-        <dt>Best finish</dt><dd>${r.best?`${ord(r.best)}${r.bestCount>1?` × ${r.bestCount}`:""}`:"–"}</dd>
+        <dt>Best class finish</dt><dd>${r.finish.best?`${ord(r.finish.best)}${r.finish.bestCount>1?` × ${r.finish.bestCount}`:""}`:"–"}</dd>
         <dt>Per scoring race</dt><dd>${r.avg.toFixed(1)} pts</dd>
         <dt>Best round</dt><dd>R${r.bestRound+1} ${esc(R.v)}, ${r.bestRoundPts} pts</dd>
         <dt>Last four races</dt><dd>${form}</dd>
@@ -1334,11 +1346,13 @@ function renderTable(){
   const rankOf=new Map();
   if(ppr){[...list].sort((a,b)=>b.ppr-a.ppr||b.rds-a.rds||a.pos-b.pos).forEach((r,i)=>rankOf.set(r.id,i+1));}
   const key=sortKey;
-  if(key!=="pts") list.sort((a,b)=>b[key]-a[key]||(ppr?b.rds-a.rds:0)||a.pos-b.pos);
+  const sortValue=r=>["w","s","t"].includes(key)?r.finish[key]:r[key];
+  if(key!=="pts") list.sort((a,b)=>sortValue(b)-sortValue(a)||(ppr?b.rds-a.rds:0)||a.pos-b.pos);
+  if(battleFilter) list=list.filter(r=>battleFilter.includes(r.id));
   const q=query.trim().toLowerCase();
   if(q) list=list.filter(r=>r.name.toLowerCase().includes(q));
   $(".tbl-wrap").classList.toggle("rank-ppr",ppr);
-  document.querySelectorAll(".sortbtn").forEach(b=>b.setAttribute("aria-sort",b.dataset.sort===key?"descending":"none"));
+  document.querySelectorAll(".sortbtn").forEach(b=>{b.removeAttribute("aria-sort");const th=b.closest("th");if(b.dataset.sort===key)th.setAttribute("aria-sort","descending");else th.removeAttribute("aria-sort");});
   if(!list.length){
     $("#tb").innerHTML=`<tr><td colspan="11" class="empty">No rider matches “${esc(query)}”. <button id="clearq">Clear the search</button> to see all ${riders.length}.</td></tr>`;
     return;
@@ -1356,9 +1370,9 @@ function renderTable(){
       <td class="num gap col-gap">${r.gap?`−${r.gap}`:`<span class="muted">–</span>`}</td>
       <td class="num diff col-gap${r.diff&&r.diff<=5||r.pos>1&&r.diff===0?" close":""}">${r.pos===1?`<span class="muted">–</span>`:r.diff===0?"level":`−${r.diff}`}</td>
       <td class="col-strip">${stripHTML(r)}</td>
-      <td class="num wst col-wst${r.w?"":" zero"}">${r.w||"–"}</td>
-      <td class="num wst col-wst${r.s?"":" zero"}">${r.s||"–"}</td>
-      <td class="num wst col-wst${r.t?"":" zero"}">${r.t||"–"}</td>
+      <td class="num wst col-wst${r.finish.w?"":" zero"}">${r.finish.w||"–"}</td>
+      <td class="num wst col-wst${r.finish.s?"":" zero"}">${r.finish.s||"–"}</td>
+      <td class="num wst col-wst${r.finish.t?"":" zero"}">${r.finish.t||"–"}</td>
     </tr>${open?detailHTML(r):""}`;
   }).join("");
 }
@@ -1370,7 +1384,7 @@ $("#tb").addEventListener("click",e=>{
   const id=+b.dataset.toggle; openId=openId===id?null:id; renderTable();
   document.querySelector(`[data-toggle="${id}"]`)?.focus();
 });
-$("#q").addEventListener("input",e=>{query=e.target.value;renderTable();});
+$("#q").addEventListener("input",e=>{battleFilter=null;query=e.target.value;renderTable();});
 function setRank(mode){
   rankMode=mode; sortKey=mode==="ppr"?"ppr":"pts";
   $("#rank-seg").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.rank===mode));
@@ -1570,7 +1584,12 @@ LF.rounds.forEach((R,k)=>R.s.forEach(S=>{
 }));
 const median=a=>{if(!a.length) return null;const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2;};
 const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
-riders.forEach(r=>{r.lf=LR.findIndex(x=>x.s===r);});
+riders.forEach(r=>{
+  r.lf=LR.findIndex(x=>x.s===r);
+  const finishes=LF.rounds.flatMap(R=>R.s.filter(S=>S.t==="R").flatMap(S=>S.res.filter(o=>o.r===r.lf&&o.cp).map(o=>o.cp)));
+  const best=finishes.length?Math.min(...finishes):null;
+  r.finish={w:finishes.filter(p=>p===1).length,s:finishes.filter(p=>p===2).length,t:finishes.filter(p=>p===3).length,best,bestCount:finishes.filter(p=>p===best).length};
+});
 function sheetHTML(r){
   if(r.lf<0) return "";
   const x=LR[r.lf], t=TS[r.lf], pm=median(t.pace);
@@ -1834,13 +1853,13 @@ let hhA=riders[1].id, hhB=riders[2].id;
 const hhRes=(r,S)=>r.lf<0?null:S.res.find(o=>o.r===r.lf)||null;
 function hhProf(r){
   const t=r.lf>=0?TS[r.lf]:null,c=r.lf>=0?RC[r.lf]:null,x=r.lf>=0?LR[r.lf]:null;
-  return {pts:r.pts,w:r.w,pod:r.w+r.s+r.t,poles:t?t.poles:0,fls:t?t.fls:0,rds:r.rds,ppr:r.ppr,
+  return {pts:r.pts,w:r.finish.w,pod:r.finish.w+r.finish.s+r.finish.t,poles:t?t.poles:0,fls:t?t.fls:0,rds:r.rds,ppr:r.ppr,
     q:c&&c.qp.length?avg(c.qp.map(o=>o.p)):null,f:c&&c.fp.length?avg(c.fp.map(o=>o.p)):null,
     pace:c&&c.pace.length?median(c.pace):null,l1:c&&c.l1.length?avg(c.l1):null,sd:c&&c.sd.length?median(c.sd)/1000:null,
     fr:c&&c.st?c.fin/c.st:null,no:x?x.no[0]:null,team:x?x.team:"",bike:x?x.bike:""};
 }
 const HHROWS=[
-  ["Championship points","pts",v=>v],["Wins","w",v=>v],["Podiums","pod",v=>v],["Poles","poles",v=>v],["Fastest laps","fls",v=>v],
+  ["Championship points","pts",v=>v],["Class wins","w",v=>v],["Class podiums","pod",v=>v],["Poles","poles",v=>v],["Fastest laps","fls",v=>v],
   ["Scoring rounds","rds",v=>v],["Points per round","ppr",v=>v.toFixed(1)],["Average qualifying","q",v=>"P"+v.toFixed(1),1],
   ["Average finish","f",v=>"P"+v.toFixed(1),1,"classified races"],["Race pace","pace",v=>v.toFixed(2)+"%",1,"median, off the race's fastest lap"],
   ["Opening lap","l1",v=>sgn(v,1),0,"places gained on lap 1"],["Lap-time spread","sd",v=>"±"+v.toFixed(2)+"s",1,"lower is steadier"],["Finish rate","fr",v=>Math.round(v*100)+"%"]
@@ -1974,7 +1993,7 @@ document.addEventListener("click",e=>{
 function v4Hash(){
   if(activeTab==="st") return openId!=null&&riders[openId]?`#rider/${slug(riders[openId])}`:"#st";
   if(activeTab==="rs") return `#rs/${resRound+1}`;
-  if(activeTab==="rd") return `#rd/${tdRound+1}/${tdSess}`;
+  if(activeTab==="rd") return `#rd/${tdRound+1}/${tdSess}/${tdCls}`;
   if(activeTab==="hh") return hhA!=null&&hhB!=null?`#hh/${slug(riders[hhA])}/${slug(riders[hhB])}`:"#hh";
   return "#"+activeTab;
 }
@@ -1988,14 +2007,14 @@ function v4Sync(push,y0){
   }catch(e){}
 }
 function v4Apply(h){
-  const [t,a,b]=decodeURIComponent(h.replace(/^#/,"")).split("/");
+  const [t,a,b,c]=decodeURIComponent(h.replace(/^#/,"")).split("/");
   if(!t||t==="st"||t==="rider"){
     const r=t==="rider"?bySlug(a):null;
     openId=r?r.id:null; if(r){query="";$("#q").value="";}
     setTab("st"); renderTable(); return !!t;
   }
   if(t==="rs"){const k=+a-1;if(k>=0&&k<DONE)resRound=k;setTab("rs");return true;}
-  if(t==="rd"){const k=+a-1;if(LF.rounds[k]){tdRound=k;const s=+b;tdSess=s>=0&&s<LF.rounds[k].s.length?s:Math.min(tdSess,LF.rounds[k].s.length-1);tdHl=null;}setTab("rd");return true;}
+  if(t==="rd"){tdCls=c==="rk"?"rk":"mt";const k=+a-1;if(LF.rounds[k]){tdRound=k;const s=+b;tdSess=s>=0&&s<LF.rounds[k].s.length?s:Math.min(tdSess,LF.rounds[k].s.length-1);tdHl=null;}setTab("rd");return true;}
   if(t==="hh"){const A=bySlug(a),B=bySlug(b);if(A&&B&&A!==B){hhA=A.id;hhB=B.id;}setTab("hh");return true;}
   if(TABS.includes(t)){setTab(t);return true;}
   return false;
@@ -2027,7 +2046,7 @@ addEventListener("popstate",e=>{
 function v4ShareText(){
   if(activeTab==="st"&&openId!=null){const r=riders[openId];return `${nice(r)}: P${r.pos} on ${r.pts} points ${FINAL?"in the final standings":"after Round "+DONE} of the 2026 MRO Minitwins.`;}
   if(activeTab==="hh"&&hhA!=null&&hhB!=null){const A=riders[hhA],B=riders[hhB];return `${nice(A)} v ${nice(B)}, head to head in the 2026 MRO Minitwins.`;}
-  if(activeTab==="rd") return `R${tdRound+1} ${LF.rounds[tdRound].venue} timing sheets, 2026 MRO Minitwins.`;
+  if(activeTab==="rd") return `R${tdRound+1} ${LF.rounds[tdRound].venue} ${tdCls==="rk"?"Rookie Minitwins":"Minitwins"} timing sheets, 2026 MRO Minitwins.`;
   if(activeTab==="rs") return `Round ${resRound+1} results, 2026 MRO Minitwins.`;
   return `2026 MRO Minitwins: standings, results and timing sheets.`;
 }
@@ -2073,7 +2092,7 @@ addEventListener("scroll",()=>{if(tip.classList.contains("show")&&!matchMedia("(
 function v4Dots(){
   const bx=$("#battles"), n=bx.children.length; if(n<2) return;
   const d=document.createElement("div"); d.className="bt-dots";
-  d.innerHTML=[...bx.children].map((c,i)=>`<button tabindex="-1" data-bd="${i}" aria-label="Battle ${i+1} of ${n}" aria-current="${i===0}"></button>`).join("");
+  d.innerHTML=[...bx.children].map((c,i)=>`<button type="button" data-bd="${i}" aria-label="Battle ${i+1} of ${n}" aria-current="${i===0}"></button>`).join("");
   bx.after(d);
   const step=()=>bx.children[1].offsetLeft-bx.children[0].offsetLeft||1;
   d.addEventListener("click",e=>{const b=e.target.closest("[data-bd]");if(!b)return;bx.scrollTo({left:+b.dataset.bd*step(),behavior:v4Calm()?"auto":"smooth"});});
@@ -2105,6 +2124,15 @@ function v4Boot(){
   (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>requestAnimationFrame(go));
 }
 
+const battleNote=document.createElement("p");battleNote.className="rank-note";battleNote.hidden=true;battleNote.innerHTML='<span></span> <button type="button" class="linkish" id="battle-clear">Show all riders</button>';$("#q").closest(".toolbar").after(battleNote);
+function clearBattle(){battleFilter=null;battleNote.hidden=true;renderTable();}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-battle]");
+  if(b){battleFilter=b.dataset.battle.split(",").map(Number);query="";$("#q").value="";openId=null;setRank("champ");setTab("st");battleNote.hidden=false;battleNote.querySelector("span").textContent=`Showing the full group: ${battleFilter.length} riders.`;renderTable();$("#battle-clear").focus();}
+});
+$("#battle-clear").addEventListener("click",clearBattle);
+$("#q").addEventListener("input",()=>{battleNote.hidden=true;});
+document.addEventListener("click",e=>{if(e.target.closest("[data-home],[data-open]"))clearBattle();});
 renderTrack(); renderTable();
 function gcEv(path,title){
   const send=()=>{try{window.goatcounter.count({path,title:title||path,event:true});}catch(e){}};
@@ -2139,7 +2167,7 @@ function infoPage(tab){
       <section class="arch-lane" aria-label="Source data">
         <div class="arch-label">Data sources</div>
         <div class="arch-flow">
-          <div class="arch-box source"><b>TSL timing PDFs</b><span>Public round leaflets and final championship documents provide classifications, timing rows, sectors and printed standings.</span></div>
+          <div class="arch-box source"><b>TSL timing PDFs</b><span>Public round leaflets and final championship documents provide classifications, timing rows and sectors. The Round 8 championship table plus calculated Round 9 points provide the unofficial final standings.</span></div>
           <div class="arch-box source"><b>Extracted JSON</b><span><code>extract.py</code> parses PDFs to <code>raw.json</code>; <code>season.json</code> holds standings rows, totals and printed dates.</span></div>
           <div class="arch-box source"><b>Derived context</b><span><code>transform.py</code>, <code>weather.py</code> and <code>mapvec.py</code> produce <code>leaflets.json</code>, <code>weather.json</code> and <code>maps.json</code>.</span></div>
           <div class="arch-box source"><b>Circuit data</b><span><code>circuits.json</code> adds corner notes and venue metadata used by Timing and Racecraft views.</span></div>
@@ -2186,16 +2214,16 @@ function infoPage(tab){
     <h3>Start with the headline</h3>
     <p>The top of the page summarises the championship. It shows the leader, races run, rounds done and how many riders have won. The battle cards show the closest gaps in the standings.</p>
     <h3>Round cards</h3>
-    <p>The row of round cards is a quick season timeline. Each card shows the circuit, dates, pole sitter, wet sessions and temperature range. Tap or click a round to open its race results. On a phone, swipe the row sideways.</p>
+    <p>The row of round cards is a quick season timeline. Each card shows the circuit, dates, pole sitter, wet sessions and temperature range. Tap or click a round to open its race results. On a phone, swipe the row sideways. In a large battle group, tap +N more to see the full group in the standings.</p>
     <h3>Standings table</h3>
     <p>The table is the main championship view. Sort by position, points and other columns from the headings. Use the search box to find a rider. The coloured race strip shows every score from Round 1 onwards; blanks mean no points.</p>
-    <p>The ranking switch can show the championship order or points per round. Open a rider to see their points maths, podium counts, race strip and buttons for timing sheets, head to head, sharing and pinning “This is me”.</p>
+    <p>The ranking switch can show the championship order or points per scoring round. Table podium counts, best finishes and Head to head finish statistics use actual Minitwins class classifications. The race strip and Race results use championship scoring positions, which can differ when ineligible riders are excluded. Open a rider for timing sheets, head to head, sharing and pinning “This is me”.</p>
     <h3>Points chase</h3>
     <p>This chart shows how selected riders built their points race by race. Add riders from the chips or from a rider detail row. Hover or tap the line to compare everyone at the same race.</p>
     <h3>Race results</h3>
     <p>Pick a round to see the points scorers in all four races and the round points summary. Positions are championship points order, with guests and rookies left out. Winner rows are highlighted. Tap a rider name to open that rider in the standings.</p>
     <h3>Timing sheets</h3>
-    <p>This view uses the detailed leaflet data. Choose the round, session and class. The table shows qualifying or race order, laps, gaps, best laps and points. The side panel has the circuit map, sector bests, corner notes, and a lap chart. The lap chart can show position, gap to leader or lap times.</p>
+    <p>This view uses the detailed leaflet data. Choose the round, session and class. Shared links preserve all three selections. The table shows qualifying or race order, laps, gaps, best laps and points. The side panel has the circuit map, sector bests, corner notes, and a lap chart. The lap chart can show position, gap to leader or lap times.</p>
     <h3>Racecraft</h3>
     <p>Racecraft turns the timing data into form guides. It highlights starters, movers, best average finishers, lap-time moments and weather patterns. Use the starts filter to compare regular riders or everyone.</p>
     <h3>Head to head</h3>
