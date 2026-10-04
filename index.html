@@ -784,7 +784,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 .ver{border:0;cursor:pointer}
 .ver:hover,.ver:focus-visible{background:#fff;color:var(--blue-ink)}
 .foot>.wrap{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 16px}
-.foot-more{flex:1 1 480px;min-width:0}
+.foot-id-block{flex:1 1 480px;min-width:0}
 .foot-app{flex:none;display:flex;align-items:center;gap:8px;min-height:32px}
 .foot-app .ver{margin-left:0;vertical-align:0;padding:5px 7px 4px}
 .info-btn{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid #3B424C;color:var(--yel);font:800 16px/1 Georgia,serif;background:#171B21}
@@ -792,15 +792,15 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 .info-dlg{width:min(920px,94vw);height:min(760px,88vh);padding:0;border:0;border-radius:14px;background:var(--surface);color:var(--ink);box-shadow:0 24px 80px -26px rgba(0,0,0,.72);overflow:hidden}
 .info-dlg[open]{display:grid;grid-template-rows:auto minmax(0,1fr)}
 .info-dlg::backdrop{background:rgba(16,19,24,.64)}
-.info-head{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line);background:var(--ink);color:#fff;border-radius:14px 14px 0 0}
+.info-head{display:flex;align-items:center;gap:12px;min-width:0;padding:16px 18px;border-bottom:1px solid var(--line);background:var(--ink);color:#fff;border-radius:14px 14px 0 0}
 .info-title{font:800 24px/1 var(--display);text-transform:uppercase;letter-spacing:.02em}
 .info-title small{font:600 13px/1 var(--text);color:var(--yel);margin-left:6px;text-transform:none}
-.info-tabs{display:flex;gap:4px;margin-left:auto;background:#252B33;border-radius:9px;padding:4px}
+.info-tabs{display:flex;gap:4px;min-width:0;max-width:100%;margin-left:auto;overflow-x:auto;background:#252B33;border-radius:9px;padding:4px}
 .info-tabs button{min-height:34px;padding:0 12px;border-radius:7px;font-weight:700;font-size:13px;color:#D8CFB8}
 .info-tabs button[aria-selected="true"]{background:var(--yel);color:var(--ink)}
 .info-close{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:24px;line-height:1}
 .info-close:hover{background:#252B33}
-.info-body{min-height:0;padding:20px 22px 24px;overflow:auto}
+.info-body{min-height:0;min-width:0;padding:20px 22px 24px;overflow:auto}
 .info-body h3{font:800 24px/1 var(--display);text-transform:uppercase;margin:18px 0 8px}
 .info-body h3:first-child{margin-top:0}
 .info-body p,.info-body li{max-width:76ch}
@@ -1008,17 +1008,8 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 
 <footer class="foot">
   <div class="wrap">
-  <details class="foot-more">
-    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T18:20">4 Oct 2026, 18:20</time></span></span><span class="foot-tg">Sources and notes</span></summary>
-    <div class="foot-body">
-    <p>Sources: <a href="https://www.tsl-timing.com/">TSL Timing results archive</a> · <a href="https://www.tsl-timing.com/event/264079">Round 9 event results</a> · <a href="https://www.tsl-timing.com/file/?f=BMCRC/2026/264079mtw.pdf">Round 9 Minitwins timing PDF</a>.</p>
-    <p>Unofficial standings compiled from the championship table through Round 8 and Round 9 race results. Round 9 points were calculated using the championship scoring scale, excluding ineligible riders; they have not been reconciled against an official final championship table.</p>
-    <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15 registered riders, a retirement, or a non-start. Guests and rookies do not score, so registered riders behind them move up into the points.</p>
-    <p>Timing sheets: the nine TSL round leaflets (grid, classification and sector analysis for qualifying and all four races). Positions and grids are class positions. The Rookie Minitwins who share the grid have their own view in the timing sheets and score no points here. Riders marked guest ran without championship registration. Points through Round 8 come from the championship table; Round 9 points are calculated from race classifications; a few riders ran without a working transponder and have no lap-by-lap data.</p>
-    <p>Weather: Open-Meteo historical model at each circuit, read at the start time of every session. Modelled values, not trackside readings; wet or dry always follows the leaflet. Corner names and circuit facts: the circuits' own guides and Wikipedia.</p>
-    </div>
-  </details>
-  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.24</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
+  <div class="foot-id-block"><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T18:33">4 Oct 2026, 18:33</time></span></span></div>
+  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.25</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
   </div>
 </footer>
 
@@ -1082,8 +1073,13 @@ if(!FINAL) ROUNDS[DONE].next=true;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 // Bump version and add a CHANGELOG entry on every code change; keep the How to use guide current.
-const APP_VERSION="4.24";
+const APP_VERSION="4.25";
 const CHANGELOG=[
+  {version:"4.25",date:"2026-10-04",items:[
+    "Round totals now list every rider who scored points, not only the top 12.",
+    "Moved Sources and notes into its own information tab between How to use and What's new.",
+    "Condensed How to use into a practical guide and integrated the introduction under its first heading."
+  ]},
   {version:"4.24",date:"2026-10-04",items:[
     "Finish and podium statistics now use actual Minitwins class classifications; championship points and scoring positions remain unchanged.",
     "Clarified the unofficial standings provenance and added direct links to TSL sources.",
@@ -1537,8 +1533,8 @@ function renderResults(){
     const list=riders.map(r=>({r,p:r.races[k*4+j]})).filter(o=>o.p).sort((a,b)=>b.p-a.p||a.r.pos-b.r.pos);
     h+=`<div class="race"><h3>Race ${j+1}<span>${list.length} points scorers</span></h3><ol>${list.map(o=>{const ps=posOf(o.p);return `<li class="${ps===1?"win pod":ps<=3?"pod":""}"><span class="p">${ps}</span><span class="n"><button data-open="${o.r.id}">${esc(nice(o.r))}</button></span><span class="v">${o.p}</span></li>`;}).join("")}</ol></div>`;
   }
-  const tot=riders.filter(r=>r.rounds[k]).sort((a,b)=>b.rounds[k]-a.rounds[k]||a.pos-b.pos).slice(0,12);
-  h+=`<div class="race sum"><h3>Round total<span>top ${tot.length}</span></h3><ol>${tot.map((r,i)=>`<li class="${i===0?"win":""}"><span class="p">${i+1}</span><span class="n"><button data-open="${r.id}">${esc(nice(r))}</button></span><span class="v">${r.rounds[k]}</span></li>`).join("")}</ol></div>`;
+  const tot=riders.filter(r=>r.rounds[k]).sort((a,b)=>b.rounds[k]-a.rounds[k]||a.pos-b.pos);
+  h+=`<div class="race sum"><h3>Round total<span>${tot.length} points scorers</span></h3><ol>${tot.map((r,i)=>`<li class="${i===0?"win":""}"><span class="p">${i+1}</span><span class="n"><button data-open="${r.id}">${esc(nice(r))}</button></span><span class="v">${r.rounds[k]}</span></li>`).join("")}</ol></div>`;
   $("#res-grid").innerHTML=h;
 }
 $("#res-seg").addEventListener("click",e=>{const b=e.target.closest("[data-rr]"); if(!b) return; resRound=+b.dataset.rr; renderResults(); renderTrack();});
@@ -2153,13 +2149,16 @@ document.addEventListener("click",e=>{
 const gcSetTab=setTab;
 setTab=function(id,focus){const prev=activeTab;gcSetTab(id,focus);if(id!==prev)gcTab(id);};
 /* Info dialog */
+const INFO_SOURCES="<p>Sources: <a href=\"https://www.tsl-timing.com/\">TSL Timing results archive</a> · <a href=\"https://www.tsl-timing.com/event/264079\">Round 9 event results</a> · <a href=\"https://www.tsl-timing.com/file/?f=BMCRC/2026/264079mtw.pdf\">Round 9 Minitwins timing PDF</a>.</p>\n    <p>Unofficial standings compiled from the championship table through Round 8 and Round 9 race results. Round 9 points were calculated using the championship scoring scale, excluding ineligible riders; they have not been reconciled against an official final championship table.</p>\n    <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15 registered riders, a retirement, or a non-start. Guests and rookies do not score, so registered riders behind them move up into the points.</p>\n    <p>Timing sheets: the nine TSL round leaflets (grid, classification and sector analysis for qualifying and all four races). Positions and grids are class positions. The Rookie Minitwins who share the grid have their own view in the timing sheets and score no points here. Riders marked guest ran without championship registration. Points through Round 8 come from the championship table; Round 9 points are calculated from race classifications; a few riders ran without a working transponder and have no lap-by-lap data.</p>\n    <p>Weather: Open-Meteo historical model at each circuit, read at the start time of every session. Modelled values, not trackside readings; wet or dry always follows the leaflet. Corner names and circuit facts: the circuits' own guides and Wikipedia.</p>";
 const infoTabs=[
   ["use","How to use"],
+  ["sources","Sources and notes"],
   ["news","What's new"],
   ["arch","Architecture"]
 ];
 const dmy=s=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||"");return m?`${m[3]}/${m[2]}/${m[1]}`:s;};
 function infoPage(tab){
+  if(tab==="sources") return `<h3>Sources and notes</h3>${INFO_SOURCES}`;
   if(tab==="news") return CHANGELOG.map(c=>`<div class="cl-ver">${esc(c.version)} <span class="soft">${esc(dmy(c.date))}</span></div><ul>${c.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`).join("");
   if(tab==="arch") return `<h3>Architecture</h3>
     <p class="arch-intro">This page is built as a static, single-file dashboard. Private source data and scripts live in <b>J-Turansky/minitwins-2026-source</b>; the published GitHub Pages copy is <b>J-Turansky/minitwins-2026</b>.</p>
@@ -2206,35 +2205,18 @@ function infoPage(tab){
       <div class="arch-note"><b>Publish boundary</b>The build stops at <code>site/index.html</code>; copying into <code>publish\</code> is a separate release step.</div>
       <div class="arch-note"><b>Source of truth</b>Original TSL timing and championship documents remain authoritative.</div>
     </div>`;
-  const upd=document.querySelector(".foot-upd time");
-  return `<div class="info-about">
-      <p><b>MRO Minitwins 2026</b> is an unofficial, public single-page dashboard for the BMCRC-MRO Minitwins 2026 championship. Version ${esc(APP_VERSION)}${upd?` was last updated ${esc(upd.textContent)}`:""}.</p>
-      <p>Data lives in the private source repo <b>J-Turansky/minitwins-2026-source</b> and is published through the GitHub Pages repo <b>J-Turansky/minitwins-2026</b>. Results come from public TSL Timing documents, with weather context from Open-Meteo.</p>
-    </div>
-    <h3>Start with the headline</h3>
-    <p>The top of the page summarises the championship. It shows the leader, races run, rounds done and how many riders have won. The battle cards show the closest gaps in the standings.</p>
-    <h3>Round cards</h3>
-    <p>The row of round cards is a quick season timeline. Each card shows the circuit, dates, pole sitter, wet sessions and temperature range. Tap or click a round to open its race results. On a phone, swipe the row sideways. In a large battle group, tap +N more to see the full group in the standings.</p>
-    <h3>Standings table</h3>
-    <p>The table is the main championship view. Sort by position, points and other columns from the headings. Use the search box to find a rider. The coloured race strip shows every score from Round 1 onwards; blanks mean no points.</p>
-    <p>The ranking switch can show the championship order or points per scoring round. Table podium counts, best finishes and Head to head finish statistics use actual Minitwins class classifications. The race strip and Race results use championship scoring positions, which can differ when ineligible riders are excluded. Open a rider for timing sheets, head to head, sharing and pinning “This is me”.</p>
-    <h3>Points chase</h3>
-    <p>This chart shows how selected riders built their points race by race. Add riders from the chips or from a rider detail row. Hover or tap the line to compare everyone at the same race.</p>
-    <h3>Race results</h3>
-    <p>Pick a round to see the points scorers in all four races and the round points summary. Positions are championship points order, with guests and rookies left out. Winner rows are highlighted. Tap a rider name to open that rider in the standings.</p>
-    <h3>Timing sheets</h3>
-    <p>This view uses the detailed leaflet data. Choose the round, session and class. Shared links preserve all three selections. The table shows qualifying or race order, laps, gaps, best laps and points. The side panel has the circuit map, sector bests, corner notes, and a lap chart. The lap chart can show position, gap to leader or lap times.</p>
-    <h3>Racecraft</h3>
-    <p>Racecraft turns the timing data into form guides. It highlights starters, movers, best average finishers, lap-time moments and weather patterns. Use the starts filter to compare regular riders or everyone.</p>
-    <h3>Head to head</h3>
-    <p>Choose two riders to compare points, finishes, qualifying and gaps across the season. Closest fights give useful presets. Reset clears both riders.</p>
-    <h3>Phone tips</h3>
-    <ul>
-      <li>Use the bottom navigation for Table, Chase, Results, Timing, Racecraft and H2H.</li>
-      <li>Swipe the round cards and wide charts sideways.</li>
-      <li>Tap table rows and chart marks; the same controls work without a mouse.</li>
-      <li>Use Share to copy a link to the current view or rider.</li>
-    </ul>`;
+  return `<h3>Start with the headline</h3>
+    <p><b>MRO Minitwins 2026</b> is an unofficial championship dashboard. The headline shows the champion and season totals; battle cards highlight gaps. Tap <b>+N more</b> to see a full group in the standings. Data details are in <b>Sources and notes</b>; the build and hosting are in <b>Architecture</b>.</p>
+    <h3>Find and compare riders</h3>
+    <p><b>Standings:</b> search by name, then tap a rider for their summary and shortcuts. Tap a sortable column heading to rank by that measure. <b>Points per round</b> divides points by scoring rounds. <b>This is me</b> pins your rider on this device.</p>
+    <p><b>Points chase:</b> select riders to compare cumulative points. <b>Head to head:</b> choose two riders or a preset; use Swap to reverse them and Reset to clear both.</p>
+    <h3>Explore a race weekend</h3>
+    <p>Tap a round card to open <b>Race results</b>: four scoring lists and the round total for every points scorer. Tap any rider name to open their standings summary.</p>
+    <p><b>Timing sheets:</b> choose a round, session and Minitwins or Rookies. Inspect classifications, lap times and circuit details. <b>Racecraft:</b> compare starts, pace and consistency; the minimum-starts filter controls who qualifies.</p>
+    <h3>Understand the numbers</h3>
+    <p>Podium counts and best finishes use actual Minitwins class results. <b>Race results</b> and coloured race strips use championship scoring positions, which can differ when ineligible riders are excluded. Blank race-strip cells mean no points.</p>
+    <h3>Navigate and share</h3>
+    <p>On phones, use the bottom tabs and swipe round cards or wide charts sideways. Hover or tap chart marks for details. <b>Share</b> opens your device's share options or copies a link; timing links preserve the round, session and class.</p>`;
 }
 function openInfo(tab="use"){
   const d=$("#infoDlg");
@@ -2244,17 +2226,18 @@ function openInfo(tab="use"){
       <button type="button" class="info-close" data-info-close aria-label="Close">×</button></div>
       <div class="info-body" id="info-panel" role="tabpanel" aria-labelledby="info-tab-${key}">${infoPage(key)}</div>`;
     d.querySelector(".info-body").scrollTop=0;
+    d.querySelector(`[data-info-tab="${key}"]`).scrollIntoView({block:"nearest",inline:"nearest"});
   };
   render(tab);
   d.onclick=e=>{
     if(e.target===d||e.target.closest("[data-info-close]")){d.close();return;}
-    const b=e.target.closest("[data-info-tab]"); if(b) render(b.dataset.infoTab);
+    const b=e.target.closest("[data-info-tab]"); if(b){const key=b.dataset.infoTab;render(key);d.querySelector(`[data-info-tab="${key}"]`).focus();}
   };
   d.onkeydown=e=>{
     const tabs=[...d.querySelectorAll("[data-info-tab]")], i=tabs.indexOf(document.activeElement);
     if(e.key==="Escape"){d.close();return;}
     if(i>=0&&(e.key==="ArrowRight"||e.key==="ArrowLeft")){
-      const n=(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length; tabs[n].click(); tabs[n].focus(); e.preventDefault();
+      const n=(i+(e.key==="ArrowRight"?1:-1)+tabs.length)%tabs.length; const key=tabs[n].dataset.infoTab; render(key); d.querySelector(`[data-info-tab="${key}"]`).focus(); e.preventDefault();
     }
   };
   if(!d.open) d.showModal();
