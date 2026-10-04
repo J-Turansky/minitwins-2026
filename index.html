@@ -655,6 +655,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
   .bt-dots button::before{content:"";width:7px;height:7px;border-radius:4px;background:var(--line-2);transition:width .2s var(--ease),background-color .2s}
   .bt-dots button[aria-current="true"]::before{width:20px;background:var(--blue)}
   .bt-foot{margin:8px 16px 0}
+  #battles{align-items:flex-start;overflow-y:hidden;transition:height .25s var(--ease)}
 
   /* Thumb-sized controls, 16px inputs so iOS does not zoom */
   .seg button{min-height:40px}
@@ -774,6 +775,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 }
 .foot-id{display:flex;flex-direction:column;gap:2px}
 .foot-upd{font-size:11.5px;color:#8F887A}
+.bt-foot[hidden]{display:none!important}
 .ver{border:0;cursor:pointer}
 .ver:hover,.ver:focus-visible{background:#fff;color:var(--blue-ink)}
 .foot>.wrap{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 16px}
@@ -890,7 +892,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
           <button aria-pressed="true" data-rank="champ">Championship</button>
           <button aria-pressed="false" data-rank="ppr">Points per round</button>
         </div>
-        <div class="seg" role="group" aria-label="Minimum rounds attended" id="min-seg" hidden>
+        <div class="seg" role="group" aria-label="Minimum scoring rounds" id="min-seg" hidden>
           <button aria-pressed="true" data-min="1">Any</button>
           <button aria-pressed="false" data-min="2">2+ rounds</button>
           <button aria-pressed="false" data-min="4">4+ rounds</button>
@@ -915,8 +917,8 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
           <th scope="col" class="num">Pos</th>
           <th scope="col">Rider</th>
           <th scope="col" class="num"><button class="sortbtn" data-sort="pts">Pts<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
-          <th scope="col" class="num col-rds" title="Rounds attended: scored in at least one race of the round">Rds</th>
-          <th scope="col" class="num"><button class="sortbtn" data-sort="ppr" title="Points per round attended">Per rd<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
+          <th scope="col" class="num col-rds" title="Scoring rounds: scored in at least one race of the round">Rds</th>
+          <th scope="col" class="num"><button class="sortbtn" data-sort="ppr" title="Points per scoring round">Per rd<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></th>
           <th scope="col" class="num col-gap">Gap</th>
           <th scope="col" class="num col-gap" title="Points behind the rider one place ahead">Ahead</th>
           <th scope="col" class="col-strip">Every race, R1 to R9</th>
@@ -1001,15 +1003,15 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 <footer class="foot">
   <div class="wrap">
   <details class="foot-more">
-    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T17:43">4 Oct 2026, 17:43</time></span></span><span class="foot-tg">Sources and notes</span></summary>
+    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T18:00">4 Oct 2026, 18:00</time></span></span><span class="foot-tg">Sources and notes</span></summary>
     <div class="foot-body">
     <p>Source: TSL Timing championship table for the Properly Protected MRO Minitwins, printed 15:55 Sunday 4 October 2026.</p>
-    <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15, a retirement, or a non-start.</p>
+    <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15 registered riders, a retirement, or a non-start. Guests and rookies do not score, so registered riders behind them move up into the points.</p>
     <p>Timing sheets: the nine TSL round leaflets (grid, classification and sector analysis for qualifying and all four races). Positions and grids are class positions. The Rookie Minitwins who share the grid have their own view in the timing sheets and score no points here. Riders marked guest ran without championship registration. Championship points always come from the official table; a few riders ran without a working transponder and have no lap-by-lap data.</p>
-    <p>Weather: Open-Meteo historical model at each circuit, read at the start time of every session. Modelled values, not trackside readings; wet or dry always follows the leaflet. Corner names and circuit facts: the circuits' own guides and Wikipedia. The 2025 title detail comes from the ACU report on Round 8 at Brands Hatch Indy.</p>
+    <p>Weather: Open-Meteo historical model at each circuit, read at the start time of every session. Modelled values, not trackside readings; wet or dry always follows the leaflet. Corner names and circuit facts: the circuits' own guides and Wikipedia.</p>
     </div>
   </details>
-  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.20</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
+  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.21</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
   </div>
 </footer>
 
@@ -1048,8 +1050,8 @@ const RAW=[
 ["Bradley HOPKINSON",83,0,0,0,". . . .|. . . .|7 7 8 6|. . . .|. . . .|6 5 7 8|7 7 7 8|. . . .|. . . ."],
 ["Andrew JOHNSON",74,0,0,0,"4 6 4 7|. . . .|. . 3 3|. . . .|2 3 3 2|. . 2 4|. . . .|2 4 5 5|2 4 4 5"],
 ["David LINDEMANN",66,2,0,1,". . . .|. . . .|. . . .|. . . .|. . . .|16 25 25 .|. . . .|. . . .|. . . ."],
-["Charlie EAGLING",61,0,0,0,". . . .|. . . .|. . . .|5 7 5 5|. 2 2 3|. . . .|4 3 4 5|3 6 4 3|. . . ."],
 ["Merlin LINDSAY",61,0,0,0,". 3 . 2|1 9 2 3|. . . .|. . . .|1 4 6 5|. . . .|. . . .|. 3 3 6|3 3 3 4"],
+["Charlie EAGLING",61,0,0,0,". . . .|. . . .|. . . .|5 7 5 5|. 2 2 3|. . . .|4 3 4 5|3 6 4 3|. . . ."],
 ["Max PRIESTLEY",60,0,0,0,". . . .|. . . .|2 4 4 2|3 4 . 3|6 8 7 7|4 6 . .|. . . .|. . . .|. . . ."],
 ["Terence QUINCE",46,0,0,0,". . . .|. . . .|. . . .|. . . .|. . . .|. . . .|. . . .|6 7 6 4|5 6 6 6"],
 ["Simon HEALEY",41,0,0,0,"3 5 2 5|3 . 3 1|. 2 . .|. . . .|. 1 . .|. . 1 3|1 . 1 2|. . . .|1 2 2 3"],
@@ -1073,8 +1075,15 @@ if(!FINAL) ROUNDS[DONE].next=true;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 // Bump version and add a CHANGELOG entry on every code change; keep the How to use guide current.
-const APP_VERSION="4.20";
+const APP_VERSION="4.21";
 const CHANGELOG=[
+  {version:"4.21",date:"2026-10-04",items:[
+    "Accuracy pass before sharing with the league: Merlin Lindsay is now 19th, ahead of Charlie Eagling on countback (both 61 points; Merlin's best race scored 9).",
+    "Racecraft now counts only riders who started a race: 40 of 44 on a Suzuki SV650.",
+    "Renamed Rounds attended to Scoring rounds, and labelled race results as points scorers in championship order.",
+    "Clarified the blank race note: guests and rookies don't score. Removed an unverified 2025 title claim.",
+    "On phones, the How it finished cards no longer leave empty space below the shorter cards."
+  ]},
   {version:"4.20",date:"2026-10-04",items:[
     "Added the Round 9 results from Brands Hatch Indy (3–4 Oct): final standings, race and qualifying results, timing, weather and circuit map.",
   ]},
@@ -1157,11 +1166,9 @@ $("#board").innerHTML=`
 const lowest=Math.max(...L.races.map(posOf));
 $("#lead-copy").innerHTML=FINAL?`
   <p><strong>Champion by ${L.pts-second.pts} points</strong>, Ronnie Harris won ${L.w} of the ${RACES} races and never finished lower than ${ord(lowest)}${(m=>m?`, apart from ${m===1?"one non-scoring race":m+" non-scoring races"}`:"")(L.races.filter(p=>!p).length)}.</p>
-  <p>${esc(nice(second))} took second, ${second.pts-riders[2].pts} points clear of ${esc(nice(riders[2]))}.</p>
-  <p>It was the second year running the title was settled with a round to spare: David Twyford wrapped up 2025 at the same Brands Hatch Indy weekend.</p>`:`
+  <p>${esc(nice(second))} took second, ${second.pts-riders[2].pts} points clear of ${esc(nice(riders[2]))}.</p>`:`
   <p><strong>${L.pts-second.pts} points clear with only ${LEFT} left to race</strong>, Ronnie Harris cannot be caught. He won ${L.w} of the ${RACES} races so far and never finished lower than ${ord(lowest)}.</p>
-  <p>Behind him the fight for second is still open: Bill Harris leads William Howarth by ${second.pts-riders[2].pts} going into the Brands Hatch finale.</p>
-  <p>It is the second year running the title has been settled with a round to spare: David Twyford wrapped up 2025 at the same Brands Hatch Indy weekend.</p>`;
+  <p>Behind him the fight for second is still open: Bill Harris leads William Howarth by ${second.pts-riders[2].pts} going into the Brands Hatch finale.</p>`;
 $("#facts").innerHTML=[
   [riders.length,"riders scored"],
   [RACES,"races run"],
@@ -1298,10 +1305,10 @@ function detailHTML(r){
     </div>
     <div class="bars-col"><h3>Points per round</h3>${barsSVG(r)}</div>
     <div>
-      <h3>Season so far</h3>
+      <h3>Season summary</h3>
       <dl class="statlist">
         <dt>Races scored</dt><dd>${r.scored} of ${RACES}</dd>
-        <dt>Rounds attended</dt><dd>${r.rds} of ${DONE}, ${r.ppr.toFixed(1)} pts per round (${ord(r.pprRank)} of ${riders.length})</dd>
+        <dt>Scoring rounds</dt><dd>${r.rds} of ${DONE}, ${r.ppr.toFixed(1)} pts per round (${ord(r.pprRank)} of ${riders.length})</dd>
         <dt>Best finish</dt><dd>${r.best?`${ord(r.best)}${r.bestCount>1?` × ${r.bestCount}`:""}`:"–"}</dd>
         <dt>Per scoring race</dt><dd>${r.avg.toFixed(1)} pts</dd>
         <dt>Best round</dt><dd>R${r.bestRound+1} ${esc(R.v)}, ${r.bestRoundPts} pts</dd>
@@ -1363,7 +1370,7 @@ function setRank(mode){
   const note=$("#rank-note"); note.hidden=mode!=="ppr";
   if(mode==="ppr"){
     const shown=riders.filter(r=>r.rds>=minRds).length;
-    note.textContent=`Total points divided by rounds attended, so part-season riders are measured on the weekends they raced. A round counts once a rider scores in any of its four races. Small grey number = championship position. Showing ${shown} of ${riders.length} riders.`;
+    note.textContent=`Total points divided by scoring rounds, so part-season riders are measured on the weekends they scored. A round counts once a rider scores in any of its four races. Small grey number = championship position. Showing ${shown} of ${riders.length} riders.`;
   }
   renderTable();
 }
@@ -1506,7 +1513,7 @@ function renderResults(){
   let h="";
   for(let j=0;j<4;j++){
     const list=riders.map(r=>({r,p:r.races[k*4+j]})).filter(o=>o.p).sort((a,b)=>b.p-a.p||a.r.pos-b.r.pos);
-    h+=`<div class="race"><h3>Race ${j+1}<span>${list.length} scorers</span></h3><ol>${list.map(o=>{const ps=posOf(o.p);return `<li class="${ps===1?"win pod":ps<=3?"pod":""}"><span class="p">${ps}</span><span class="n"><button data-open="${o.r.id}">${esc(nice(o.r))}</button></span><span class="v">${o.p}</span></li>`;}).join("")}</ol></div>`;
+    h+=`<div class="race"><h3>Race ${j+1}<span>${list.length} points scorers</span></h3><ol>${list.map(o=>{const ps=posOf(o.p);return `<li class="${ps===1?"win pod":ps<=3?"pod":""}"><span class="p">${ps}</span><span class="n"><button data-open="${o.r.id}">${esc(nice(o.r))}</button></span><span class="v">${o.p}</span></li>`;}).join("")}</ol></div>`;
   }
   const tot=riders.filter(r=>r.rounds[k]).sort((a,b)=>b.rounds[k]-a.rounds[k]||a.pos-b.pos).slice(0,12);
   h+=`<div class="race sum"><h3>Round total<span>top ${tot.length}</span></h3><ol>${tot.map((r,i)=>`<li class="${i===0?"win":""}"><span class="p">${i+1}</span><span class="n"><button data-open="${r.id}">${esc(nice(r))}</button></span><span class="v">${r.rounds[k]}</span></li>`).join("")}</ol></div>`;
@@ -1792,12 +1799,13 @@ function rcWeather(){
 function renderRacecraft(){
   $("#rc-min").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.rcmin===rcMin));
   const n=Math.min(5,rcMin);
-  const mt=LR.filter(x=>!x.rk), sv=mt.filter(x=>/SV650/.test(x.bike)).length, other=mt.filter(x=>x.bike&&!/SV650/.test(x.bike)).map(x=>x.bike);
+  const started=new Set();LF.rounds.forEach(R=>R.s.forEach(S=>{if(S.t==="R")S.res.forEach(o=>started.add(o.r));}));
+  const mt=LR.filter((x,i)=>!x.rk&&started.has(i)), sv=mt.filter(x=>/SV650\b/.test(x.bike)).length, other=mt.filter(x=>x.bike&&!/SV650\b/.test(x.bike)).map(x=>"a "+esc(x.bike));
   $("#rc-facts").innerHTML=`<div class="stat-row">${[
     [RCT.st.toLocaleString("en-GB"),"Minitwins race starts",1],[RCT.laps.toLocaleString("en-GB"),"race laps timed to the thousandth"],
     [Math.round(RCT.miles).toLocaleString("en-GB")+" mi","raced by the class"],[Math.round(RCT.fin/RCT.st*100)+"%","of starts reached the flag"]
   ].map(([b,s,y])=>`<div class="stat${y?" y":""}"><b>${b}</b><span>${s}</span></div>`).join("")}</div>
-  <p class="rank-note">${sv} of the ${mt.length} riders who raced in the class were on a Suzuki SV650${other.length?`; the others rode a ${other.map(esc).join(" and a ")}`:""}. All figures use class positions and every race start in the eight timing leaflets, guests included.</p>`;
+  <p class="rank-note">${sv} of the ${mt.length} riders who raced in the class were on a Suzuki SV650${other.length?`; the others rode ${other.length>1?other.slice(0,-1).join(", ")+" and "+other.at(-1):other[0]}`:""}. All figures use class positions and every race start in the nine timing leaflets, guests included.</p>`;
   $("#rc-grid").innerHTML=[
     rcCard("Launch control","Average places gained on the opening lap, from class grid slot to the end of lap 1.",rcList(c=>c.l1.length>=n?avg(c.l1):null),v=>`${sgn(v,1)}<small>per start</small>`),
     rcCard("Overtakers","Places gained lap by lap, from the grid to the flag, per race.",rcList(c=>c.onN>=n?c.on/c.onN:null),v=>`${v.toFixed(1)}<small>per race</small>`),
@@ -1825,7 +1833,7 @@ function hhProf(r){
 }
 const HHROWS=[
   ["Championship points","pts",v=>v],["Wins","w",v=>v],["Podiums","pod",v=>v],["Poles","poles",v=>v],["Fastest laps","fls",v=>v],
-  ["Rounds attended","rds",v=>v],["Points per round","ppr",v=>v.toFixed(1)],["Average qualifying","q",v=>"P"+v.toFixed(1),1],
+  ["Scoring rounds","rds",v=>v],["Points per round","ppr",v=>v.toFixed(1)],["Average qualifying","q",v=>"P"+v.toFixed(1),1],
   ["Average finish","f",v=>"P"+v.toFixed(1),1,"classified races"],["Race pace","pace",v=>v.toFixed(2)+"%",1,"median, off the race's fastest lap"],
   ["Opening lap","l1",v=>sgn(v,1),0,"places gained on lap 1"],["Lap-time spread","sd",v=>"±"+v.toFixed(2)+"s",1,"lower is steadier"],["Finish rate","fr",v=>Math.round(v*100)+"%"]
 ];
@@ -2064,7 +2072,15 @@ function v4Dots(){
   let raf;
   bx.addEventListener("scroll",()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{
     const end=bx.scrollLeft+bx.clientWidth>=bx.scrollWidth-4, i=end?n-1:Math.round(bx.scrollLeft/step());
-    d.querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-current",j===i));});},{passive:true});
+    d.querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-current",j===i));fit(i);});},{passive:true});
+  const mq=matchMedia("(max-width:640px)");
+  function fit(i){
+    if(!mq.matches){bx.style.height="";return;}
+    const cs=getComputedStyle(bx), pad=cs.boxSizing==="border-box"?parseFloat(cs.paddingTop)+parseFloat(cs.paddingBottom):0;
+    bx.style.height=bx.children[i].offsetHeight+pad+"px";
+  }
+  const cur=()=>Math.max(0,[...d.children].findIndex(b=>b.getAttribute("aria-current")==="true"));
+  fit(0); mq.addEventListener("change",()=>fit(cur())); addEventListener("resize",()=>fit(cur()),{passive:true});
 }
 
 /* Re-draw fixed-width charts when a phone rotates */
@@ -2168,7 +2184,7 @@ function infoPage(tab){
       <p>Data lives in the private source repo <b>J-Turansky/minitwins-2026-source</b> and is published through the GitHub Pages repo <b>J-Turansky/minitwins-2026</b>. Results come from public TSL Timing documents, with weather context from Open-Meteo.</p>
     </div>
     <h3>Start with the headline</h3>
-    <p>The top of the page summarises the championship. It shows the leader, races run, rounds done and how many riders have won. The battle cards show the closest groups still worth watching.</p>
+    <p>The top of the page summarises the championship. It shows the leader, races run, rounds done and how many riders have won. The battle cards show the closest gaps in the standings.</p>
     <h3>Round cards</h3>
     <p>The row of round cards is a quick season timeline. Each card shows the circuit, dates, pole sitter, wet sessions and temperature range. Tap or click a round to open its race results. On a phone, swipe the row sideways.</p>
     <h3>Standings table</h3>
@@ -2177,7 +2193,7 @@ function infoPage(tab){
     <h3>Points chase</h3>
     <p>This chart shows how selected riders built their points race by race. Add riders from the chips or from a rider detail row. Hover or tap the line to compare everyone at the same race.</p>
     <h3>Race results</h3>
-    <p>Pick a round to see all four race classifications and the round points summary. Winner rows are highlighted. Tap a rider name to open that rider in the standings.</p>
+    <p>Pick a round to see the points scorers in all four races and the round points summary. Positions are championship points order, with guests and rookies left out. Winner rows are highlighted. Tap a rider name to open that rider in the standings.</p>
     <h3>Timing sheets</h3>
     <p>This view uses the detailed leaflet data. Choose the round, session and class. The table shows qualifying or race order, laps, gaps, best laps and points. The side panel has the circuit map, sector bests, corner notes, and a lap chart. The lap chart can show position, gap to leader or lap times.</p>
     <h3>Racecraft</h3>
