@@ -852,7 +852,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
       <a class="brand-mark" href="./" data-home aria-label="MRO Minitwins, back to the top"><span class="m">MRO</span><span class="t">Minitwins</span></a>
       <div class="brand-sub">BMCRC-MRO Championships 2026</div>
     </div>
-    <div class="mast-meta"><span class="mm-l">Final standings · TSL Timing, printed 4 Oct 2026</span><span class="mm-s">Final standings<br>Data 4 Oct</span></div>
+    <div class="mast-meta"><span class="mm-l">Final standings · Data from TSL Timing, 4 Oct 2026</span><span class="mm-s">Final standings<br>Data 4 Oct</span></div>
     <button class="m-share" data-share aria-label="Share this view"><svg width="22" height="22" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.5V3M6.5 6.5 10 3l3.5 3.5M6.5 9H4.5v8h11V9h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </header>
@@ -1003,7 +1003,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
 <footer class="foot">
   <div class="wrap">
   <details class="foot-more">
-    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T18:00">4 Oct 2026, 18:00</time></span></span><span class="foot-tg">Sources and notes</span></summary>
+    <summary><span class="foot-id"><span class="foot-by">Built by Jordan Turansky · Data from public sources · © 2026</span><span class="foot-upd">Last updated <time datetime="2026-10-04T18:02">4 Oct 2026, 18:02</time></span></span><span class="foot-tg">Sources and notes</span></summary>
     <div class="foot-body">
     <p>Source: TSL Timing championship table for the Properly Protected MRO Minitwins, printed 15:55 Sunday 4 October 2026.</p>
     <p>Race positions are read back from points (25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1). A blank race means no points: outside the top 15 registered riders, a retirement, or a non-start. Guests and rookies do not score, so registered riders behind them move up into the points.</p>
@@ -1011,7 +1011,7 @@ tbody tr.r.me td:first-child{box-shadow:inset 4px 0 0 var(--yel)}
     <p>Weather: Open-Meteo historical model at each circuit, read at the start time of every session. Modelled values, not trackside readings; wet or dry always follows the leaflet. Corner names and circuit facts: the circuits' own guides and Wikipedia.</p>
     </div>
   </details>
-  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.21</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
+  <div class="foot-app"><button class="ver" id="versionBtn" type="button" aria-label="Open what&apos;s new">v4.22</button><button class="info-btn" id="infoBtn" type="button" aria-label="Open site information">i</button></div>
   </div>
 </footer>
 
@@ -1075,8 +1075,11 @@ if(!FINAL) ROUNDS[DONE].next=true;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
 // Bump version and add a CHANGELOG entry on every code change; keep the How to use guide current.
-const APP_VERSION="4.21";
+const APP_VERSION="4.22";
 const CHANGELOG=[
+  {version:"4.22",date:"2026-10-04",items:[
+    "Header now reads Data from TSL Timing with the date, instead of printed."
+  ]},
   {version:"4.21",date:"2026-10-04",items:[
     "Accuracy pass before sharing with the league: Merlin Lindsay is now 19th, ahead of Charlie Eagling on countback (both 61 points; Merlin's best race scored 9).",
     "Racecraft now counts only riders who started a race: 40 of 44 on a Suzuki SV650.",
